@@ -47,6 +47,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // OrbIT Labs color system
+        "orbit-purple": "hsl(var(--orbit-purple))",
+        "orbit-purple-glow": "hsl(var(--orbit-purple-glow))",
+        "orbit-dark": "hsl(var(--orbit-dark))",
+        "orbit-dark-lighter": "hsl(var(--orbit-dark-lighter))",
+        "orbit-text-primary": "hsl(var(--orbit-text-primary))",
+        "orbit-text-muted": "hsl(var(--orbit-text-muted))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -62,6 +69,17 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        "gradient-purple": "var(--gradient-purple)",
+        "gradient-purple-glow": "var(--gradient-purple-glow)",
+      },
+      boxShadow: {
+        "purple": "var(--shadow-purple)",
+        "purple-intense": "var(--shadow-purple-intense)",
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
