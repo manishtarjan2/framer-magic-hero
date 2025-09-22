@@ -128,6 +128,10 @@ export default {
             opacity: "0",
           },
         },
+        "scroll-left": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -135,6 +139,7 @@ export default {
         "spin-slow": "spin-slow 20s linear infinite",
         "spin-reverse": "spin-reverse 15s linear infinite",
         "suck-in": "suck-in 8s linear infinite",
+        "scroll-left": "scroll-left 20s linear infinite",
       },
     },
   },

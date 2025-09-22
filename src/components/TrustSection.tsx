@@ -29,16 +29,28 @@ const TrustSection = () => {
           Over 50+ business trust us
         </h2>
 
-        {/* Company logos */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-32 max-w-4xl mx-auto">
-          {companyLogos.map((company, index) => (
-            <div key={index} className="flex items-center justify-center space-x-3 opacity-60 hover:opacity-100 transition-opacity duration-300">
-              <company.icon className="w-8 h-8 text-orbit-text-muted" />
-              <span className="text-orbit-text-muted font-medium text-lg">
-                {company.name}
-              </span>
-            </div>
-          ))}
+        {/* Company logos carousel */}
+        <div className="mb-32 overflow-hidden">
+          <div className="flex animate-scroll-left">
+            {/* First set of logos */}
+            {companyLogos.map((company, index) => (
+              <div key={index} className="flex items-center justify-center space-x-3 opacity-60 hover:opacity-100 transition-opacity duration-300 min-w-[200px] mx-8">
+                <company.icon className="w-8 h-8 text-orbit-text-muted" />
+                <span className="text-orbit-text-muted font-medium text-lg whitespace-nowrap">
+                  {company.name}
+                </span>
+              </div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {companyLogos.map((company, index) => (
+              <div key={`duplicate-${index}`} className="flex items-center justify-center space-x-3 opacity-60 hover:opacity-100 transition-opacity duration-300 min-w-[200px] mx-8">
+                <company.icon className="w-8 h-8 text-orbit-text-muted" />
+                <span className="text-orbit-text-muted font-medium text-lg whitespace-nowrap">
+                  {company.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Services badge */}
