@@ -5,7 +5,7 @@ import starfieldBg from "@/assets/starfield-bg.jpg";
 const HeroSection = () => {
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
       style={{ 
         backgroundImage: `url(${starfieldBg})`,
         backgroundSize: 'cover',
@@ -13,11 +13,51 @@ const HeroSection = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Background gradient glow */}
-      <div className="absolute inset-0 bg-gradient-purple-glow"></div>
+      {/* Dark overlay to increase black intensity */}
+      <div className="absolute inset-0 bg-black/70"></div>
       
-      {/* Purple glow effect in center */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-orbit-purple opacity-20 blur-[150px] rounded-full"></div>
+      {/* Black hole effect - Big rotating circle */}
+      <div 
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin-slow"
+        style={{
+          width: '406px',
+          height: '406px',
+          background: 'linear-gradient(229deg, #df7afe 13%, rgba(201, 110, 240, 0) 35.0235827429153%, rgba(164, 92, 219, 0) 64.17244225559735%, rgb(129, 74, 200) 88%)',
+          borderRadius: '363px',
+          animationDuration: '20s'
+        }}
+      ></div>
+      
+      {/* Black hole effect - Small rotating circle (opposite direction) */}
+      <div 
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin-reverse z-10"
+        style={{
+          width: '300px',
+          height: '300px',
+          background: 'linear-gradient(141deg, #df7afe 13%, rgba(201, 110, 240, 0) 35.0235827429153%, rgba(164, 92, 219, 0) 64.17244225559735%, rgb(129, 74, 200) 88%)',
+          borderRadius: '363px',
+          animationDuration: '15s'
+        }}
+      ></div>
+      
+      {/* Black hole center */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-black rounded-full z-20 shadow-2xl"></div>
+      
+      {/* Animated stars getting sucked in */}
+      <div className="absolute inset-0 z-5">
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full animate-pulse opacity-70"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `suck-in ${8 + Math.random() * 4}s linear infinite`,
+              animationDelay: `${Math.random() * 8}s`
+            }}
+          ></div>
+        ))}
+      </div>
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
