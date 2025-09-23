@@ -189,7 +189,7 @@ const HeroSection = () => {
           position: 'absolute',
           borderRadius: '396px',
           bottom: 'calc(20% + 19rem)',
-          left: '53%',
+          left: '51%',
           transform: 'translate(-50%, 50%)'
         }}
       ></div>
