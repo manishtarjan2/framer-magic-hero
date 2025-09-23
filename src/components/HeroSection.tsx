@@ -187,8 +187,8 @@ const HeroSection = () => {
           backgroundColor: '#000000',
           overflow: 'visible',
           position: 'absolute',
-          borderRadius: '296px',
-          bottom: 'calc(20% + 16rem)',
+          borderRadius: '396px',
+          bottom: 'calc(20% + 17rem)',
           left: '45%',
           transform: 'translate(-50%, 50%)'
         }}
@@ -198,8 +198,8 @@ const HeroSection = () => {
       <div 
         className="absolute animate-spin-slow z-0 pointer-events-none"
         style={{
-          bottom: 'calc(20% + 14rem)',
-          left: '45%',
+          bottom: 'calc(20% + 11rem)',
+          left: '50%',
           transform: 'translate(-50%, 50%)',
           width: '300px',
           height: '300px',
@@ -217,8 +217,8 @@ const HeroSection = () => {
       <div 
         className="absolute animate-spin-reverse z-0 pointer-events-none"
         style={{
-          bottom: 'calc(20% + 14rem)',
-          left: '45%',
+          bottom: 'calc(20% + 13rem)',
+          left: '42%',
           transform: 'translate(-50%, 50%)',
           width: '200px',
           height: '200px',
