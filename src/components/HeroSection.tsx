@@ -188,7 +188,7 @@ const HeroSection = () => {
           overflow: 'visible',
           position: 'absolute',
           borderRadius: '396px',
-          bottom: 'calc(20% + 19rem)',
+          bottom: 'calc(20% + 20rem)',
           left: '51%',
           transform: 'translate(-50%, 50%)'
         }}
