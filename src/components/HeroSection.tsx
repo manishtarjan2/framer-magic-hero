@@ -188,8 +188,8 @@ const HeroSection = () => {
           overflow: 'visible',
           position: 'absolute',
           borderRadius: '396px',
-          bottom: 'calc(20% + 17rem)',
-          left: '45%',
+          bottom: 'calc(20% + 19rem)',
+          left: '50%',
           transform: 'translate(-50%, 50%)'
         }}
       ></div>
@@ -199,7 +199,7 @@ const HeroSection = () => {
         className="absolute animate-spin-slow z-0 pointer-events-none"
         style={{
           bottom: 'calc(20% + 11rem)',
-          left: '50%',
+          left: '46%',
           transform: 'translate(-50%, 50%)',
           width: '300px',
           height: '300px',
