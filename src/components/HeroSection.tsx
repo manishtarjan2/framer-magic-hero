@@ -199,7 +199,7 @@ const HeroSection = () => {
         className="absolute animate-spin-slow z-0 pointer-events-none"
         style={{
           bottom: 'calc(20% + 11rem)',
-          left: '41%',
+          left: '40%',
           transform: 'translate(-50%, 50%)',
           width: '300px',
           height: '300px',
