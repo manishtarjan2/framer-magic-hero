@@ -1,7 +1,58 @@
+import React, { useState, useEffect, useRef } from 'react';
 import { Badge } from "@/components/ui/badge";
-import { Clock, Bot, Mail, TrendingUp, Code, MessageCircle } from "lucide-react";
+import { Clock, Bot, Mail, TrendingUp, Code, MessageCircle, Check, X } from "lucide-react";
 
 const ServicesSection = () => {
+  const [visibleCards, setVisibleCards] = useState(new Set());
+  const [typingText, setTypingText] = useState('');
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const sectionRef = useRef(null);
+  
+  const fullTypingText = "Generate a list...";
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cardIndex = parseInt(entry.target.dataset.cardIndex);
+            setVisibleCards(prev => new Set(prev).add(cardIndex));
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '50px' }
+    );
+
+    const cards = document.querySelectorAll('[data-card-index]');
+    cards.forEach(card => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (visibleCards.has(1)) { // AI Assistant card
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index <= fullTypingText.length) {
+          setTypingText(fullTypingText.slice(0, index));
+          index++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    }
+  }, [visibleCards]);
+
+  useEffect(() => {
+    if (visibleCards.has(0)) { // Workflow automation card
+      const interval = setInterval(() => {
+        setScrollPosition(prev => (prev + 1) % 400);
+      }, 80);
+      return () => clearInterval(interval);
+    }
+  }, [visibleCards]);
+
   const services = [
     {
       category: "Workflow Automation",
@@ -9,7 +60,8 @@ const ServicesSection = () => {
       description: "We help you streamline internal operations by automating manual workflows like data entry, reporting, and approval chains saving time and cutting down errors.",
       badges: ["Internal Task Bots", "100+ Automations"],
       icon: Clock,
-      size: "large"
+      size: "large",
+      type: "workflow"
     },
     {
       category: "AI Assistant",
@@ -17,25 +69,8 @@ const ServicesSection = () => {
       description: "From managing calendars to drafting emails and summarizing meetings, our AI assistants work around the clock to keep your business running smarter and faster.",
       badges: ["Summaries", "Scheduling", "Many more"],
       icon: Bot,
-      size: "small"
-    },
-    {
-      category: "",
-      title: "What can I help with?",
-      description: "Whether you need help scheduling meetings or need changes to presentations and dashboards, I can help.",
-      badges: [],
-      icon: MessageCircle,
-      size: "small",
-      isChat: true
-    },
-    {
-      category: "",
-      title: "Email Sending",
-      description: "LinkedIn • IT services • Founders",
-      badges: [],
-      icon: Mail,
-      size: "small",
-      isEmail: true
+      size: "large",
+      type: "assistant"
     },
     {
       category: "Sales & Marketing", 
@@ -43,7 +78,8 @@ const ServicesSection = () => {
       description: "AI tools for lead generation, personalized outreach, and automated content creation that scales your sales efforts and builds stronger brand presence.",
       badges: ["Leads", "Content", "Social post"],
       icon: TrendingUp,
-      size: "large"
+      size: "large",
+      type: "sales"
     },
     {
       category: "Custom Projects",
@@ -51,42 +87,70 @@ const ServicesSection = () => {
       description: "Whether you're starting from scratch or enhancing an existing system, we offer strategic consulting and develop custom AI projects aligned with your unique goals.",
       badges: ["Strategy", "Custom AI", "Consulting"],
       icon: Code,
-      size: "large"
+      size: "large",
+      type: "custom"
     }
   ];
 
+  const workflowTasks = [
+    { name: "Payroll management", status: "pending", date: "Due on 2nd july" },
+    { name: "Employee Tracking", status: "completed", date: "2 days ago" },
+    { name: "Social media post", status: "cancelled", date: "Cancelled by user" },
+    { name: "Lead list", status: "progress", date: "70% prepared" },
+    { name: "Invoice processing", status: "pending", date: "Due on 5th july" },
+    { name: "Data backup", status: "completed", date: "1 hour ago" },
+    { name: "Report generation", status: "progress", date: "45% completed" },
+    { name: "Email campaign", status: "pending", date: "Scheduled for tomorrow" }
+  ];
+
+  const emailContacts = [
+    { name: "Jack Daniel", role: "Founder", email: "justin@main.com", company: "Xavier LLC", verified: true },
+    { name: "Ganga Chappal", role: "CEO", email: "ganga@company.com", company: "Tech Corp", verified: false }
+  ];
+
   return (
-    <section className="relative bg-black py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-black py-24 px-6 overflow-hidden">
       {/* Grid pattern background */}
       <div 
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+            linear-gradient(rgb(0, 0, 0) 1px, transparent 1px),
+            linear-gradient(90deg, rgb(0, 0, 0) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px'
         }}
       />
       
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr justify-items-center w-full max-w-6xl">
           {services.map((service, index) => (
             <div 
               key={index}
+              data-card-index={index}
               className={`
                 ${service.size === 'large' ? 'lg:col-span-2' : 'lg:col-span-1'}
-                ${service.isChat ? 'bg-orbit-dark-lighter/30' : 'bg-orbit-dark-lighter/50'}
-                backdrop-blur-sm border border-orbit-text-muted/10 rounded-2xl p-8
-                hover:bg-orbit-dark-lighter/70 transition-all duration-300
+                ${service.type === 'assistant' ? 'lg:col-start-2 lg:col-span-2' : ''}
+                ${service.isChat ? 'bg-black/20' : 'bg-black/30'}
+                backdrop-blur-sm border border-white/10 rounded-2xl p-8
+                hover:bg-black/40 transition-all duration-500
                 flex flex-col justify-between
+                transform transition-all duration-700 ease-out
+                ${visibleCards.has(index) 
+                  ? 'translate-y-0 opacity-100' 
+                  : 'translate-y-16 opacity-0'
+                }
+                w-full max-w-lg
               `}
+              style={{
+                transitionDelay: `${index * 150}ms`
+              }}
             >
               {/* Category */}
               {service.category && (
                 <div className="mb-4">
-                  <span className="text-orbit-text-muted text-sm font-medium">
+                  <span className="text-gray-400 text-sm font-medium">
                     {service.category}
                   </span>
                 </div>
@@ -94,57 +158,283 @@ const ServicesSection = () => {
 
               {/* Main Content */}
               <div className="flex-1">
-                {service.isChat ? (
-                  <div className="space-y-6">
-                    <div className="flex items-center justify-center mb-6">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/20 to-purple-700/20 flex items-center justify-center">
-                        <div className="w-8 h-8 rounded-full bg-purple-500"></div>
+                {service.type === 'workflow' ? (
+                  <div className="flex gap-6 h-80">
+                    {/* Container 1 - Animated Task List */}
+                    <div 
+                      style={{
+                        boxSizing: 'border-box',
+                        width: '450px',
+                        height: '350px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '50px 50px 0px 50px',
+                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
+                        overflow: 'hidden',
+                        alignContent: 'center',
+                        flexWrap: 'nowrap',
+                        gap: '10px',
+                        aspectRatio: '1.2857142857142858 / 1',
+                        borderRadius: '18px'
+                      }}
+                    >
+                      <div className="w-full h-full">
+                        <div className="flex justify-between text-sm text-gray-400 mb-4">
+                          <span>All Tasks</span>
+                          <span>Waiting for approval</span>
+                        </div>
+                        
+                        <div 
+                          className="space-y-3 transition-transform duration-300 ease-linear will-change-transform"
+                          style={{
+                            transform: `translateY(-${scrollPosition}px)`
+                          }}
+                        >
+                          {[...workflowTasks, ...workflowTasks].map((task, taskIndex) => (
+                            <div key={taskIndex} className="flex items-center space-x-3 p-3 bg-white/5 rounded-lg">
+                              <div className="flex-shrink-0">
+                                {task.status === 'completed' && <Check className="w-4 h-4 text-green-400" />}
+                                {task.status === 'cancelled' && <X className="w-4 h-4 text-red-400" />}
+                                {task.status === 'pending' && <Clock className="w-4 h-4 text-yellow-400" />}
+                                {task.status === 'progress' && <div className="w-4 h-4 rounded-full bg-blue-400 animate-pulse"></div>}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="text-white text-sm font-medium">{task.name}</div>
+                                <div className="text-gray-400 text-xs">{task.date}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Fade effect at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black/90 to-transparent pointer-events-none"></div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-semibold text-orbit-text-primary mb-4">
-                      {service.title}
-                    </h3>
-                    <p className="text-orbit-text-muted text-sm leading-relaxed">
-                      {service.description}
-                    </p>
-                    <div className="bg-orbit-dark-lighter/50 rounded-lg p-3 text-sm text-orbit-text-muted border border-orbit-text-muted/10">
-                      Generate a list...
+                    
+                    {/* Container 2 - Title and Description */}
+                    <div 
+                      style={{
+                        boxSizing: 'border-box',
+                        width: '450px',
+                        height: '350px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '50px 50px 0px 50px',
+                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
+                        overflow: 'hidden',
+                        alignContent: 'center',
+                        flexWrap: 'nowrap',
+                        gap: '10px',
+                        aspectRatio: '1.2857142857142858 / 1',
+                        borderRadius: '18px'
+                      }}
+                    >
+                      <div className="w-full h-full flex flex-col justify-center">
+                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-400 leading-relaxed text-base">
+                          We help you streamline internal operations by automating manual workflows like data entry, reporting, and approval chains saving time and cutting down errors.
+                        </p>
+                      </div>
                     </div>
                   </div>
-                ) : service.isEmail ? (
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-semibold text-orbit-text-primary">
-                        {service.title}
-                      </h3>
-                      <service.icon className="w-5 h-5 text-orbit-text-muted" />
+                ) : service.type === 'assistant' ? (
+                  <div className="flex gap-6 h-80">
+                    {/* Container 1 - Content */}
+                    <div 
+                      style={{
+                        boxSizing: 'border-box',
+                        width: '450px',
+                        height: '350px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '50px 50px 0px 50px',
+                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
+                        overflow: 'hidden',
+                        alignContent: 'center',
+                        flexWrap: 'nowrap',
+                        gap: '10px',
+                        aspectRatio: '1.2857142857142858 / 1',
+                        borderRadius: '18px'
+                      }}
+                    >
+                      <div className="w-full h-full flex flex-col justify-center">
+                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-400 leading-relaxed text-base">
+                          Get instant support with our AI assistant that understands your business needs and provides intelligent responses 24/7.
+                        </p>
+                      </div>
                     </div>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 rounded-full bg-orbit-text-muted/20 flex items-center justify-center">
-                          <span className="text-xs text-orbit-text-primary font-medium">MT</span>
+                    
+                    {/* Container 2 - Chat Interface */}
+                    <div 
+                      style={{
+                        boxSizing: 'border-box',
+                        width: '450px',
+                        height: '350px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '50px 50px 0px 50px',
+                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
+                        overflow: 'hidden',
+                        alignContent: 'center',
+                        flexWrap: 'nowrap',
+                        gap: '10px',
+                        aspectRatio: '1.2857142857142858 / 1',
+                        borderRadius: '18px'
+                      }}
+                    >
+                      <div className="w-full h-full">
+                        {/* Chat Header */}
+                        <div className="flex items-center justify-center mb-6">
+                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-purple-700/30 flex items-center justify-center">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600"></div>
+                          </div>
                         </div>
-                        <div>
-                          <div className="text-sm text-orbit-text-primary font-medium">Mike Tyler</div>
-                          <div className="text-xs text-orbit-text-muted">Founder</div>
+                        
+                        <h3 className="text-lg font-semibold text-white mb-4 text-center">
+                          What can I help with?
+                        </h3>
+                        
+                        <p className="text-gray-400 text-sm leading-relaxed text-center mb-6">
+                          Whether you need help in customer handling or make changes in your system just give me command
+                        </p>
+                        
+                        {/* Chat Input */}
+                        <div className="bg-white/5 rounded-lg p-4 text-sm text-gray-300 mb-4">
+                          <div className="flex items-center space-x-2">
+                            <span>{typingText}</span>
+                            {visibleCards.has(index) && (
+                              <div className="w-2 h-4 bg-purple-500 animate-pulse"></div>
+                            )}
+                          </div>
                         </div>
-                        <div className="ml-auto">
-                          <Badge variant="outline" className="text-xs bg-green-500/10 border-green-500/20 text-green-400">
-                            Verified
-                          </Badge>
+                        
+                        {/* Additional UI elements */}
+                        <div className="space-y-2 text-xs text-gray-500 mt-auto">
+                          <div className="flex items-center space-x-2">
+                            <span>📄</span>
+                            <span>Add document</span>
+                          </div>
+                          <div className="flex items-center space-x-4 text-xs">
+                            <span>📊 Analyze</span>
+                            <span>🖼️ Generate image</span>
+                            <span>🔍 research</span>
+                          </div>
                         </div>
                       </div>
-                      <p className="text-orbit-text-muted text-sm">
-                        {service.description}
-                      </p>
+                    </div>
+                  </div>
+                ) : service.type === 'sales' ? (
+                  <div className="flex gap-6 h-80">
+                    {/* Container 1 - Content */}
+                    <div 
+                      style={{
+                        boxSizing: 'border-box',
+                        width: '450px',
+                        height: '350px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '50px 50px 0px 50px',
+                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
+                        overflow: 'hidden',
+                        alignContent: 'center',
+                        flexWrap: 'nowrap',
+                        gap: '10px',
+                        aspectRatio: '1.2857142857142858 / 1',
+                        borderRadius: '18px'
+                      }}
+                    >
+                      <div className="w-full h-full flex flex-col justify-center">
+                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-400 leading-relaxed text-base">
+                          Boost your sales with automated outreach campaigns that find qualified leads and nurture them into paying customers.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Container 2 - Email Sending Interface */}
+                    <div 
+                      style={{
+                        boxSizing: 'border-box',
+                        width: '450px',
+                        height: '350px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '50px 50px 0px 50px',
+                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
+                        overflow: 'hidden',
+                        alignContent: 'center',
+                        flexWrap: 'nowrap',
+                        gap: '10px',
+                        aspectRatio: '1.2857142857142858 / 1',
+                        borderRadius: '18px'
+                      }}
+                    >
+                      <div className="w-full h-full">
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="text-lg font-semibold text-white">
+                            E-mail Sending
+                          </h3>
+                          <div className="w-6 h-6 rounded-full bg-purple-500"></div>
+                        </div>
+                        
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          <Badge className="bg-blue-600 text-white border-0">LinkedIn</Badge>
+                          <Badge className="bg-gray-700 text-white border-0">IT services</Badge>
+                          <Badge className="bg-gray-700 text-white border-0">Founders</Badge>
+                        </div>
+                        
+                        <div className="space-y-3 flex-1 overflow-y-auto">
+                          {emailContacts.map((contact, contactIndex) => (
+                            <div key={contactIndex} className="flex items-center space-x-3 p-3 bg-white/5 rounded-lg">
+                              <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+                                <span className="text-xs text-white font-medium">
+                                  {contact.name.split(' ').map(n => n[0]).join('')}
+                                </span>
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-center space-x-2">
+                                  <span className="text-sm text-white font-medium">{contact.name}</span>
+                                  {contact.verified && (
+                                    <Badge className="bg-green-500/20 border-green-500/40 text-green-400 text-xs">
+                                      Verified
+                                    </Badge>
+                                  )}
+                                </div>
+                                <div className="text-xs text-gray-400">{contact.role}</div>
+                                <div className="text-xs text-gray-500">{contact.email}</div>
+                                <div className="text-xs text-gray-500">{contact.company}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ) : (
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-orbit-text-primary mb-4 leading-tight">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
                       {service.title}
                     </h3>
-                    <p className="text-orbit-text-muted leading-relaxed mb-6">
+                    <p className="text-gray-400 leading-relaxed mb-6">
                       {service.description}
                     </p>
                   </div>
@@ -158,7 +448,7 @@ const ServicesSection = () => {
                     <Badge 
                       key={badgeIndex}
                       variant="outline"
-                      className="bg-orbit-dark-lighter/50 border-orbit-text-muted/20 text-orbit-text-primary px-3 py-1 text-xs font-medium backdrop-blur-sm"
+                      className="bg-white/5 border-white/10 text-white px-3 py-1 text-xs font-medium backdrop-blur-sm"
                     >
                       {badge}
                     </Badge>

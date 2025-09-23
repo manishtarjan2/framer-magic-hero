@@ -121,4 +121,47 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Writing effect cursor animation */
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  .writing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: currentColor;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+  }
+  
+  /* Slide reveal animation */
+  @keyframes slide-reveal {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+      filter: blur(10px);
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+  
+  .slide-reveal {
+    animation: slide-reveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  
+  .slide-reveal-delayed {
+    animation: slide-reveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .slide-reveal-buttons {
+    animation: slide-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+    opacity: 0;
+  }
 }
