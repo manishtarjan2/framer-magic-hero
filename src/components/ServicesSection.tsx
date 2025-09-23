@@ -15,7 +15,8 @@ const ServicesSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const cardIndex = parseInt(entry.target.dataset.cardIndex);
+            const htmlElement = entry.target as HTMLElement;
+            const cardIndex = parseInt(htmlElement.dataset.cardIndex || '0');
             setVisibleCards(prev => new Set(prev).add(cardIndex));
           }
         });
@@ -109,7 +110,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="relative bg-black py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-black py-12 sm:py-16 lg:py-24 px-4 sm:px-6 overflow-hidden">
       {/* Grid pattern background */}
       <div 
         className="absolute inset-0 opacity-10"
@@ -118,13 +119,13 @@ const ServicesSection = () => {
             linear-gradient(rgb(0, 0, 0) 1px, transparent 1px),
             linear-gradient(90deg, rgb(0, 0, 0) 1px, transparent 1px)
           `,
-          backgroundSize: '40px 40px'
+          backgroundSize: '30px 30px'
         }}
       />
       
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr justify-items-center w-full max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 auto-rows-fr justify-items-center w-full max-w-6xl">
           {services.map((service, index) => (
             <div 
               key={index}
@@ -132,7 +133,7 @@ const ServicesSection = () => {
               className={`
                 ${service.size === 'large' ? 'lg:col-span-2' : 'lg:col-span-1'}
                 ${service.type === 'assistant' ? 'lg:col-start-2 lg:col-span-2' : ''}
-                ${service.isChat ? 'bg-black/20' : 'bg-black/30'}
+                bg-black/30
                 backdrop-blur-sm border border-white/10 rounded-2xl p-8
                 hover:bg-black/40 transition-all duration-500
                 flex flex-col justify-between
@@ -159,26 +160,10 @@ const ServicesSection = () => {
               {/* Main Content */}
               <div className="flex-1">
                 {service.type === 'workflow' ? (
-                  <div className="flex gap-6 h-80">
+                  <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 h-auto lg:h-80">
                     {/* Container 1 - Animated Task List */}
                     <div 
-                      style={{
-                        boxSizing: 'border-box',
-                        width: '450px',
-                        height: '350px',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '50px 50px 0px 50px',
-                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
-                        overflow: 'hidden',
-                        alignContent: 'center',
-                        flexWrap: 'nowrap',
-                        gap: '10px',
-                        aspectRatio: '1.2857142857142858 / 1',
-                        borderRadius: '18px'
-                      }}
+                      className="w-full lg:w-96 h-64 lg:h-80 bg-black/80 rounded-2xl p-4 lg:p-8 flex flex-col justify-center overflow-hidden"
                     >
                       <div className="w-full h-full">
                         <div className="flex justify-between text-sm text-gray-400 mb-4">
@@ -215,61 +200,29 @@ const ServicesSection = () => {
                     
                     {/* Container 2 - Title and Description */}
                     <div 
-                      style={{
-                        boxSizing: 'border-box',
-                        width: '450px',
-                        height: '350px',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '50px 50px 0px 50px',
-                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
-                        overflow: 'hidden',
-                        alignContent: 'center',
-                        flexWrap: 'nowrap',
-                        gap: '10px',
-                        aspectRatio: '1.2857142857142858 / 1',
-                        borderRadius: '18px'
-                      }}
+                      className="w-full lg:w-96 h-64 lg:h-80 bg-black/80 rounded-2xl p-4 lg:p-8 flex flex-col justify-center"
                     >
                       <div className="w-full h-full flex flex-col justify-center">
-                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 lg:mb-6 leading-tight">
                           {service.title}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed text-base">
+                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
                           We help you streamline internal operations by automating manual workflows like data entry, reporting, and approval chains saving time and cutting down errors.
                         </p>
                       </div>
                     </div>
                   </div>
                 ) : service.type === 'assistant' ? (
-                  <div className="flex gap-6 h-80">
+                  <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 h-auto lg:h-80">
                     {/* Container 1 - Content */}
                     <div 
-                      style={{
-                        boxSizing: 'border-box',
-                        width: '450px',
-                        height: '350px',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '50px 50px 0px 50px',
-                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
-                        overflow: 'hidden',
-                        alignContent: 'center',
-                        flexWrap: 'nowrap',
-                        gap: '10px',
-                        aspectRatio: '1.2857142857142858 / 1',
-                        borderRadius: '18px'
-                      }}
+                      className="w-full lg:w-96 h-64 lg:h-80 bg-black/80 rounded-2xl p-4 lg:p-8 flex flex-col justify-center"
                     >
                       <div className="w-full h-full flex flex-col justify-center">
-                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 lg:mb-6 leading-tight">
                           {service.title}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed text-base">
+                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
                           Get instant support with our AI assistant that understands your business needs and provides intelligent responses 24/7.
                         </p>
                       </div>
@@ -277,23 +230,7 @@ const ServicesSection = () => {
                     
                     {/* Container 2 - Chat Interface */}
                     <div 
-                      style={{
-                        boxSizing: 'border-box',
-                        width: '450px',
-                        height: '350px',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '50px 50px 0px 50px',
-                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
-                        overflow: 'hidden',
-                        alignContent: 'center',
-                        flexWrap: 'nowrap',
-                        gap: '10px',
-                        aspectRatio: '1.2857142857142858 / 1',
-                        borderRadius: '18px'
-                      }}
+                      className="w-full lg:w-96 h-64 lg:h-80 bg-black/80 rounded-2xl p-4 lg:p-8 flex flex-col"
                     >
                       <div className="w-full h-full">
                         {/* Chat Header */}
@@ -337,32 +274,16 @@ const ServicesSection = () => {
                     </div>
                   </div>
                 ) : service.type === 'sales' ? (
-                  <div className="flex gap-6 h-80">
+                  <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 h-auto lg:h-80">
                     {/* Container 1 - Content */}
                     <div 
-                      style={{
-                        boxSizing: 'border-box',
-                        width: '450px',
-                        height: '350px',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '50px 50px 0px 50px',
-                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
-                        overflow: 'hidden',
-                        alignContent: 'center',
-                        flexWrap: 'nowrap',
-                        gap: '10px',
-                        aspectRatio: '1.2857142857142858 / 1',
-                        borderRadius: '18px'
-                      }}
+                      className="w-full lg:w-96 h-64 lg:h-80 bg-black/80 rounded-2xl p-4 lg:p-8 flex flex-col justify-center"
                     >
                       <div className="w-full h-full flex flex-col justify-center">
-                        <h3 className="text-2xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 lg:mb-6 leading-tight">
                           {service.title}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed text-base">
+                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
                           Boost your sales with automated outreach campaigns that find qualified leads and nurture them into paying customers.
                         </p>
                       </div>
@@ -370,23 +291,7 @@ const ServicesSection = () => {
                     
                     {/* Container 2 - Email Sending Interface */}
                     <div 
-                      style={{
-                        boxSizing: 'border-box',
-                        width: '450px',
-                        height: '350px',
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: '50px 50px 0px 50px',
-                        backgroundColor: 'rgba(13, 13, 13, 0.8)',
-                        overflow: 'hidden',
-                        alignContent: 'center',
-                        flexWrap: 'nowrap',
-                        gap: '10px',
-                        aspectRatio: '1.2857142857142858 / 1',
-                        borderRadius: '18px'
-                      }}
+                      className="w-full lg:w-96 h-64 lg:h-80 bg-black/80 rounded-2xl p-4 lg:p-8 flex flex-col"
                     >
                       <div className="w-full h-full">
                         <div className="flex items-center justify-between mb-4">
@@ -431,10 +336,10 @@ const ServicesSection = () => {
                   </div>
                 ) : (
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
                       {service.title}
                     </h3>
-                    <p className="text-gray-400 leading-relaxed mb-6">
+                    <p className="text-gray-400 leading-relaxed mb-6 text-sm sm:text-base">
                       {service.description}
                     </p>
                   </div>
@@ -443,12 +348,12 @@ const ServicesSection = () => {
 
               {/* Badges */}
               {service.badges.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-6">
+                <div className="flex flex-wrap gap-2 mt-4 sm:mt-6">
                   {service.badges.map((badge, badgeIndex) => (
                     <Badge 
                       key={badgeIndex}
                       variant="outline"
-                      className="bg-white/5 border-white/10 text-white px-3 py-1 text-xs font-medium backdrop-blur-sm"
+                      className="bg-white/5 border-white/10 text-white px-2 sm:px-3 py-1 text-xs font-medium backdrop-blur-sm"
                     >
                       {badge}
                     </Badge>

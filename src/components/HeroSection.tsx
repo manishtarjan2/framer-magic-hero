@@ -181,14 +181,14 @@ const HeroSection = () => {
       <div 
         className="absolute z-0 pointer-events-none"
         style={{
-          width: '410px',
-          height: '410px',
+          width: '150px',
+          height: '150px',
           display: 'block',
           backgroundColor: '#000000',
           overflow: 'visible',
           position: 'absolute',
           borderRadius: '296px',
-          top: '50%',
+          top: '42%',
           left: '50%',
           transform: 'translate(-50%, -50%)'
         }}
@@ -198,11 +198,11 @@ const HeroSection = () => {
       <div 
         className="absolute animate-spin-slow z-0 pointer-events-none"
         style={{
-          top: '8%',
-          left: '37%',
+          top: '42%',
+          left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '406px',
-          height: '406px',
+          width: '300px',
+          height: '300px',
           display: 'block',
           background: 'linear-gradient(229deg, #df7afe 13%, rgba(201, 110, 240, 0) 35.0235827429153%, rgba(164, 92, 219, 0) 64.17244225559735%, rgb(129, 74, 200) 88%)',
           overflow: 'hidden',
@@ -217,11 +217,11 @@ const HeroSection = () => {
       <div 
         className="absolute animate-spin-reverse z-0 pointer-events-none"
         style={{
-          top: '15%',
-          left: '40%',
+          top: '42%',
+          left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '300px',
-          height: '300px',
+          width: '200px',
+          height: '200px',
           display: 'block',
           background: 'linear-gradient(141deg, #df7afe 13%, rgba(201, 110, 240, 0) 35.0235827429153%, rgba(164, 92, 219, 0) 64.17244225559735%, rgb(129, 74, 200) 88%)',
           overflow: 'hidden',
@@ -234,34 +234,34 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-20 text-center max-w-6xl mx-auto px-6">
         {/* New Badge */}
-        <div className="inline-flex items-center space-x-3 bg-orbit-purple/20 backdrop-blur-sm border border-orbit-purple/30 rounded-full px-5 py-2 mb-12">
-          <span className="bg-orbit-purple text-white px-3 py-1 rounded-full text-sm font-medium">
+        <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-orbit-purple/20 backdrop-blur-sm border border-orbit-purple/30 rounded-full px-3 sm:px-5 py-2 mb-8 sm:mb-12 mx-4 relative z-30">
+          <span className="bg-orbit-purple text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
             New
           </span>
-          <span ref={badgeEffect.ref} className="text-orbit-text-primary text-sm font-medium">
+          <span ref={badgeEffect.ref} className="text-orbit-text-primary text-xs sm:text-sm font-medium">
             {badgeEffect.displayedText}
             {badgeEffect.isWriting && <span className="writing-cursor"></span>}
           </span>
         </div>
 
         {/* Main Headline */}
-        <h1 ref={headlineReveal.ref} className={`text-3xl md:text-5xl lg:text-6xl font-bold text-orbit-text-primary mb-8 leading-loose ${headlineReveal.isRevealed ? 'slide-reveal' : 'opacity-0'}`}>
-          Intelligent Automation for{ }
-          <br className="hidden lg:block my-8" />
+        <h1 ref={headlineReveal.ref as React.RefObject<HTMLHeadingElement>} className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-orbit-text-primary mb-6 sm:mb-8 leading-tight sm:leading-loose px-4 ${headlineReveal.isRevealed ? 'slide-reveal' : 'opacity-0'}`}>
+          Intelligent Automation for{' '}
+          <br className="hidden lg:block my-4 sm:my-8" />
           Modern Businesses.
         </h1>
 
         {/* Subtitle */}
-        <p ref={subtitleReveal.ref} className={`text-sm md:text-base text-orbit-text-muted mb-14 max-w-4xl mx-auto leading-relaxed ${subtitleReveal.isRevealed ? 'slide-reveal-delayed' : 'opacity-0'}`}>
+        <p ref={subtitleReveal.ref as React.RefObject<HTMLParagraphElement>} className={`text-sm sm:text-base md:text-lg text-orbit-text-muted mb-10 sm:mb-14 max-w-2xl lg:max-w-4xl mx-auto leading-relaxed px-4 ${subtitleReveal.isRevealed ? 'slide-reveal-delayed' : 'opacity-0'}`}>
           ObrIT Labs brings AI automation to your fingertips & streamline tasks.
         </p>
 
         {/* CTA Buttons */}
-        <div ref={buttonsReveal.ref} className={`flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 ${buttonsReveal.isRevealed ? 'slide-reveal-buttons' : 'opacity-0'}`}>
+        <div ref={buttonsReveal.ref as React.RefObject<HTMLDivElement>} className={`flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4 ${buttonsReveal.isRevealed ? 'slide-reveal-buttons' : 'opacity-0'}`}>
           <Button 
             variant="orbit"
             size="lg"
-            className="font-medium text-lg flex items-center space-x-2"
+            className="font-medium text-sm sm:text-base lg:text-lg flex items-center space-x-2 w-full sm:w-auto relative z-30"
             style={{
               boxSizing: 'border-box',
               width: 'min-content',
@@ -270,7 +270,7 @@ const HeroSection = () => {
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: '9px 13px 9px 13px',
+              padding: '8px 12px',
               boxShadow: '0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15), 0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14), 0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.14), 0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.13), 0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.1), 0px 30px 30px -3.75px rgba(0, 0, 0, 0.05)',
               overflow: 'visible',
               alignContent: 'center',
@@ -282,13 +282,13 @@ const HeroSection = () => {
             }}
           >
             <span>Get in touch</span>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
           
           <Button 
             variant="outline" 
             size="lg"
-            className="font-medium text-lg"
+            className="font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto relative z-30"
             style={{
               boxSizing: 'border-box',
               width: 'min-content',
@@ -297,7 +297,7 @@ const HeroSection = () => {
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: '9px 13px 9px 13px',
+              padding: '8px 12px',
               boxShadow: '0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15), 0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14), 0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.14), 0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.13), 0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.1), 0px 30px 30px -3.75px rgba(0, 0, 0, 0.05)',
               overflow: 'visible',
               alignContent: 'center',
