@@ -106,54 +106,59 @@ const CaseStudiesSection = () => {
                 <CarouselItem key={study.id} className="pl-6">
                   <div className="grid lg:grid-cols-2 gap-2 items-center min-h-[400px] px-8">
                     
-                    {/* Image Section */}
-                    <div className="relative">
-                      <div className="relative z-10">
-                        <img
-                          src={study.image}
-                          alt="Case study product"
-                          className="w-full max-w-md mx-auto lg:mx-0 h-auto object-cover rounded-lg"
-                        />
+                    {/* Left container → push right */}
+                    <div className="flex justify-end">
+                      {/* Image Section */}
+                      <div className="relative max-w-md">
+                        <div className="relative z-10">
+                          <img
+                            src={study.image}
+                            alt="Case study product"
+                            className="w-full h-auto object-cover rounded-lg"
+                          />
+                        </div>
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-lg" />
                     </div>
-
-                    {/* Content Section */}
-                    <div className="space-y-8">
-                      {/* Company Logo/Name */}
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-primary-glow flex items-center justify-center">
-                          <span className="text-white font-bold text-sm">
-                            {study.company.charAt(0)}
+                  
+                    {/* Right container → push left */}
+                    <div className="flex justify-start">
+                      {/* Content Section */}
+                      <div className="space-y-8 max-w-lg">
+                        {/* Company Logo/Name */}
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-primary-glow flex items-center justify-center">
+                            <span className="text-white font-bold text-sm">
+                              {study.company.charAt(0)}
+                            </span>
+                          </div>
+                          <span className="text-white font-semibold text-xl">
+                            {study.company}
                           </span>
                         </div>
-                        <span className="text-white font-semibold text-xl">
-                          {study.company}
-                        </span>
-                      </div>
 
-                      {/* Quote */}
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
-                        "{study.quote}"
-                      </h3>
+                        {/* Quote */}
+                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+                          "{study.quote}"
+                        </h3>
 
-                      {/* Description */}
-                      <p className="text-white/70 text-lg leading-relaxed">
-                        {study.description}
-                      </p>
+                        {/* Description */}
+                        <p className="text-white/70 text-lg leading-relaxed">
+                          {study.description}
+                        </p>
 
-                      {/* Impact Metrics */}
-                      <div className="space-y-4">
-                        <h4 className="text-white font-semibold text-xl">Impact :</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {study.impact.map((item, index) => (
-                            <div key={index} className="flex items-center gap-3">
-                              <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                              <span className="text-white/90 font-medium">
-                                {item.metric}
-                              </span>
-                            </div>
-                          ))}
+                        {/* Impact Metrics */}
+                        <div className="space-y-4">
+                          <h4 className="text-white font-semibold text-xl">Impact :</h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            {study.impact.map((item, index) => (
+                              <div key={index} className="flex items-center gap-3">
+                                <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                                <span className="text-white/90 font-medium">
+                                  {item.metric}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
