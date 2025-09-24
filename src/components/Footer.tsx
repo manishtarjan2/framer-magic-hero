@@ -106,7 +106,7 @@ const Footer = () => {
         </div>
         
         {/* Bottom Bar */}
-        <div className="border-t border-orbit-purple/20 pt-8">
+        <div className="border-t border-orbit-purple/20 pt-4">
           <div className="flex justify-center items-center">
             <p className="text-orbit-text-muted text-sm">Created by OrbIT Labs. All rights reserved.</p>
           </div>
