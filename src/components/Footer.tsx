@@ -101,17 +101,7 @@ const Footer = () => {
               </a>
             </div>
             
-            {/* Action Buttons */}
-            <div className="space-y-3 pt-6">
-              <Button variant="orbit" className="w-full justify-between">
-                Use For Free 
-                <span className="ml-2">→</span>
-              </Button>
-              <Button variant="outline" className="w-full justify-between border-orbit-purple/20 text-orbit-text-muted">
-                Another AI Template 
-                <span className="ml-2">→</span>
-              </Button>
-            </div>
+
           </div>
         </div>
         
