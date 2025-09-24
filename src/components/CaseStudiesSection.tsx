@@ -104,7 +104,7 @@ const CaseStudiesSection = () => {
             <CarouselContent>
               {caseStudies.map((study) => (
                 <CarouselItem key={study.id} className="pl-6">
-                  <div className="grid lg:grid-cols-2 gap-4 items-center min-h-[600px] px-8">
+                  <div className="grid lg:grid-cols-2 gap-4 items-center min-h-[600px] px-4">
                     {/* Image Section */}
                     <div className="relative">
                       <div className="relative z-10">
