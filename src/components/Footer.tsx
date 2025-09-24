@@ -4,7 +4,7 @@ import orbitLogo from "@/assets/orbit-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-orbit-dark border-t border-orbit-purple/20 px-6 pt-12 pb-6">
+    <footer className="bg-orbit-dark border-t border-orbit-purple/20 px-6 pt-12 pb-4">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
