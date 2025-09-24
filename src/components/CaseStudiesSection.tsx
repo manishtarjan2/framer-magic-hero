@@ -104,7 +104,7 @@ const CaseStudiesSection = () => {
             <CarouselContent>
               {caseStudies.map((study) => (
                 <CarouselItem key={study.id} className="pl-6">
-                  <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px] px-8">
+                  <div className="grid lg:grid-cols-2 gap-4 items-center min-h-[600px] px-8">
                     {/* Image Section */}
                     <div className="relative">
                       <div className="relative z-10">
@@ -163,12 +163,10 @@ const CaseStudiesSection = () => {
           </Carousel>
 
           {/* Drag Indicator */}
-          <div className="flex items-center justify-center gap-4 mt-12">
-            <ChevronLeft className="w-5 h-5 text-white/50" />
+          <div className="flex items-center justify-center mt-12">
             <span className="text-white/70 text-sm font-medium tracking-wider uppercase">
               Drag to Explore
             </span>
-            <ChevronRight className="w-5 h-5 text-white/50" />
           </div>
 
           {/* Dots Indicator */}
