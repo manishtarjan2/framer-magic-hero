@@ -4,7 +4,7 @@ import orbitLogo from "@/assets/orbit-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-orbit-dark border-t border-orbit-purple/20 px-6 py-16">
+    <footer className="bg-orbit-dark border-t border-orbit-purple/20 px-6 py-12">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
@@ -117,10 +117,8 @@ const Footer = () => {
         
         {/* Bottom Bar */}
         <div className="border-t border-orbit-purple/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-orbit-text-muted text-sm">Logo by flaticon</p>
-            <p className="text-orbit-text-muted text-sm">Visioned and Crafted by Kanishk Dubey</p>
-            <p className="text-orbit-text-muted text-sm">© All right reserved</p>
+          <div className="flex justify-center items-center">
+            <p className="text-orbit-text-muted text-sm">Created by OrbIT Labs. All rights reserved.</p>
           </div>
         </div>
       </div>
