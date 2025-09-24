@@ -187,8 +187,8 @@ const HeroSection = () => {
           backgroundColor: '#000000',
           overflow: 'visible',
           position: 'absolute',
-          borderRadius: '396px',
-          bottom: 'calc(20% + 20rem)',
+          borderRadius: '400px',
+          bottom: 'calc(64%)',
           left: '51%',
           transform: 'translate(-50%, 50%)'
         }}
@@ -198,18 +198,18 @@ const HeroSection = () => {
       <div 
         className="absolute animate-spin-slow z-0 pointer-events-none"
         style={{
-          bottom: 'calc(20% + 11rem)',
-          left: '40%',
+          bottom: 'calc(38%)',
+          left: '36%',
           transform: 'translate(-50%, 50%)',
-          width: '300px',
-          height: '300px',
+          width: '360px',
+          height: '360px',
           display: 'block',
           background: 'linear-gradient(229deg, #df7afe 13%, rgba(201, 110, 240, 0) 35.0235827429153%, rgba(164, 92, 219, 0) 64.17244225559735%, rgb(129, 74, 200) 88%)',
           overflow: 'hidden',
           gap: '10px',
           aspectRatio: '1 / 1',
           borderRadius: '363px',
-          animationDuration: '20s'
+          animationDuration: '8s'
         }}
       ></div>
       
@@ -217,17 +217,17 @@ const HeroSection = () => {
       <div 
         className="absolute animate-spin-reverse z-0 pointer-events-none"
         style={{
-          bottom: 'calc(20% + 13rem)',
-          left: '43%',
+          bottom: 'calc(45%)',
+          left: '40%',
           transform: 'translate(-50%, 50%)',
-          width: '200px',
-          height: '200px',
+          width: '260px',
+          height: '260px',
           display: 'block',
           background: 'linear-gradient(141deg, #df7afe 13%, rgba(201, 110, 240, 0) 35.0235827429153%, rgba(164, 92, 219, 0) 64.17244225559735%, rgb(129, 74, 200) 88%)',
           overflow: 'hidden',
           aspectRatio: '1 / 1',
-          borderRadius: '363px',
-          animationDuration: '15s'
+          borderRadius: '263px',
+          animationDuration: '6s'
         }}
       ></div>
 
