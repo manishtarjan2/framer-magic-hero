@@ -104,20 +104,8 @@ const CaseStudiesSection = () => {
             <CarouselContent>
               {caseStudies.map((study) => (
                 <CarouselItem key={study.id} className="pl-6">
-                  <div className="grid lg:grid-cols-2 gap-4 items-center min-h-[400px] px-8">
-                      
-                      {/* Left container → push right */}
-                      <div className="flex justify-end">
-                        {/* Your left-side content */}
-                      </div>
+                  <div className="grid lg:grid-cols-2 gap-2 items-center min-h-[400px] px-8">
                     
-                      {/* Right container → push left */}
-                      <div className="flex justify-start">
-                        {/* Your right-side content */}
-                      </div>
-                    
-                    </div>
-
                     {/* Image Section */}
                     <div className="relative">
                       <div className="relative z-10">
