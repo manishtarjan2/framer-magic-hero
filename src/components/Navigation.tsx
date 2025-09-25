@@ -12,17 +12,33 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="relative z-50 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto">
+    <nav className="relative z-50 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto h-[60px]">
       {/* Logo */}
-      <div className="flex items-center space-x-3">
-        <img src={orbitLogo} alt="OrbIT Labs" className="w-8 h-8" />
-        <span className="text-xl font-semibold text-orbit-text-primary">
-          Orb<span className="text-orbit-purple">IT</span> Labs
-        </span>
-      </div>
+      <div
+        style={{
+          width: "190px",
+          height: "60px",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          minWidth: "100px",
+          overflow: "visible",
+          padding: 0,
+          alignContent: "center",
+          flexWrap: "nowrap",
+          gap: "10px",
+          backgroundImage: `url(${orbitLogo})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          borderRadius: 0,
+        }}
+        aria-label="OrbIT Labs logo"
+      />
 
       {/* Navigation Links */}
-      <div className="hidden md:flex items-center space-x-8">
+      <div className="hidden md:flex items-center space-x-8 h-full">
         <Link to="/" className={getLinkClass("/")}>
           Home
         </Link>
@@ -38,9 +54,11 @@ const Navigation = () => {
       </div>
 
       {/* CTA Button */}
-      <Button variant="orbit" className="px-6 py-2 rounded-xl font-medium">
-        Book a call
-      </Button>
+      <div className="flex items-center h-full">
+        <Button variant="orbit" className="px-6 py-2 rounded-xl font-medium h-[40px] flex items-center">
+          Book a call
+        </Button>
+      </div>
     </nav>
   );
 };
