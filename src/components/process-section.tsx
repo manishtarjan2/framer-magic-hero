@@ -414,111 +414,6 @@ const Checklist: React.FC = () => (
   </div>
 );
 
-// Optimization Dashboard Component - Based on Framer Design
-const OptimizationDashboard: React.FC = () => {
-  const [spinRotation, setSpinRotation] = useState(0);
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  useEffect(() => {
-    // Spinning animation for the chatbot system
-    const spinInterval = setInterval(() => {
-      setSpinRotation(prev => (prev + 3) % 360);
-    }, 25);
-
-    // Slideshow animation for workflow system
-    const slideInterval = setInterval(() => {
-      setSlideIndex(prev => (prev + 1) % 2);
-    }, 1500);
-
-    return () => {
-      clearInterval(spinInterval);
-      clearInterval(slideInterval);
-    };
-  }, []);
-
-  return (
-    <div className="bg-gray-900/80 border border-gray-700/50 rounded-lg p-3 space-y-2.5">
-      {/* Chatbot System */}
-      <div className="bg-gray-800/50 border border-gray-700/30 rounded px-2 py-1.5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 bg-white/5 rounded flex items-center justify-center">
-            <svg className="w-2.5 h-2.5 text-white/75" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
-            </svg>
-          </div>
-          <div>
-            <div className="text-xs text-white/90 font-medium">Chatbot system</div>
-            <div className="text-xs text-gray-400">Efficiency will increase by 20%</div>
-          </div>
-        </div>
-        <div 
-          className="w-4 h-4 flex items-center justify-center"
-          style={{ transform: `rotate(${spinRotation}deg)` }}
-        >
-          <svg className="w-3 h-3 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M4 2a2 2 0 00-2 2v11a1 1 0 001 1h2a1 1 0 001-1V4a2 2 0 00-2-2H4zM14 2a2 2 0 012 2v11a1 1 0 01-1 1h-2a1 1 0 01-1-1V4a2 2 0 012-2h2zM10.5 2A1.5 1.5 0 009 3.5v13A1.5 1.5 0 0010.5 18h1a1.5 1.5 0 001.5-1.5v-13A1.5 1.5 0 0011.5 2h-1z" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Workflow System */}
-      <div className="bg-gray-800/50 border border-gray-700/30 rounded px-2 py-1.5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 bg-white/5 rounded flex items-center justify-center">
-            <svg className="w-2.5 h-2.5 text-white/75" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
-            </svg>
-          </div>
-          <div>
-            <div className="text-xs text-white/90 font-medium">Workflow system</div>
-            <div className="text-xs text-gray-400">Update available..</div>
-          </div>
-        </div>
-        <div className="w-4 h-4 bg-white/5 border border-gray-700/30 rounded flex items-center justify-center overflow-hidden">
-          <div className="relative w-full h-full">
-            <svg 
-              className={`absolute w-2.5 h-2.5 text-purple-500 transition-transform duration-300 ${slideIndex === 0 ? 'translate-y-0' : '-translate-y-4'}`}
-              style={{ left: '50%', top: '50%', transform: `translate(-50%, -50%) translateY(${slideIndex === 0 ? '0' : '-16px'})` }}
-              fill="currentColor" 
-              viewBox="0 0 20 20"
-            >
-              <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-            <svg 
-              className={`absolute w-2.5 h-2.5 text-purple-500 transition-transform duration-300 ${slideIndex === 1 ? 'translate-y-0' : 'translate-y-4'}`}
-              style={{ left: '50%', top: '50%', transform: `translate(-50%, -50%) translateY(${slideIndex === 1 ? '0' : '16px'})` }}
-              fill="currentColor" 
-              viewBox="0 0 20 20"
-            >
-              <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* Sales System */}
-      <div className="bg-gray-800/50 border border-gray-700/30 rounded px-2 py-1.5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 bg-white/5 rounded flex items-center justify-center">
-            <svg className="w-2.5 h-2.5 text-white/75" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-            </svg>
-          </div>
-          <div>
-            <div className="text-xs text-white/90 font-medium">Sales system</div>
-            <div className="text-xs text-gray-400">Up to date</div>
-          </div>
-        </div>
-        <div className="w-4 h-4 flex items-center justify-center">
-          <svg className="w-2.5 h-2.5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-          </svg>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 // Main Process Section Component
 const ProcessSection: React.FC = () => {
   return (
@@ -588,7 +483,7 @@ const ProcessSection: React.FC = () => {
           </div>
 
           {/* Step 4 */}
-          <div className="bg-black/30 backdrop-blur-sm border border-gray-800/50 rounded-lg p-5 relative overflow-hidden">
+          <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-800/50 rounded-lg p-5 relative overflow-hidden">
             <div className="mb-3">
               <div className="text-xs text-gray-500 mb-1">Step 4</div>
               <h3 className="text-lg font-bold mb-2">Continuous Optimization</h3>
@@ -597,7 +492,7 @@ const ProcessSection: React.FC = () => {
               </p>
             </div>
             <div className="mt-4 scale-75 origin-center">
-              <OptimizationDashboard />
+              <StatusDashboard />
             </div>
           </div>
         </div>

@@ -104,17 +104,17 @@ const CaseStudiesSection = () => {
             <CarouselContent>
               {caseStudies.map((study) => (
                 <CarouselItem key={study.id} className="pl-6">
-                  <div className="grid lg:grid-cols-2 gap-2 items-center min-h-[400px] px-8">
+                  <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[320px] px-8">
                     
                     {/* Left container → push right */}
                     <div className="flex justify-end">
                       {/* Image Section */}
-                      <div className="relative max-w-md">
+                      <div className="relative max-w-sm">
                         <div className="relative z-10">
                           <img
                             src={study.image}
                             alt="Case study product"
-                            className="w-full h-auto object-cover rounded-lg"
+                            className="w-full h-auto object-cover rounded-md"
                           />
                         </div>
                       </div>
@@ -123,37 +123,37 @@ const CaseStudiesSection = () => {
                     {/* Right container → push left */}
                     <div className="flex justify-start">
                       {/* Content Section */}
-                      <div className="space-y-8 max-w-lg">
+                      <div className="space-y-6 max-w-md">
                         {/* Company Logo/Name */}
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-primary-glow flex items-center justify-center">
-                            <span className="text-white font-bold text-sm">
+                        <div className="flex items-center gap-2">
+                          <div className="w-7 h-7 rounded-full bg-gradient-to-r from-primary to-primary-glow flex items-center justify-center">
+                            <span className="text-white font-bold text-xs">
                               {study.company.charAt(0)}
                             </span>
                           </div>
-                          <span className="text-white font-semibold text-xl">
+                          <span className="text-white font-semibold text-lg">
                             {study.company}
                           </span>
                         </div>
 
                         {/* Quote */}
-                        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white leading-snug">
                           "{study.quote}"
                         </h3>
 
                         {/* Description */}
-                        <p className="text-white/70 text-lg leading-relaxed">
+                        <p className="text-white/70 text-sm md:text-base leading-relaxed">
                           {study.description}
                         </p>
 
                         {/* Impact Metrics */}
-                        <div className="space-y-4">
-                          <h4 className="text-white font-semibold text-xl">Impact :</h4>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="space-y-3">
+                          <h4 className="text-white font-semibold text-base">Impact :</h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                             {study.impact.map((item, index) => (
-                              <div key={index} className="flex items-center gap-3">
+                              <div key={index} className="flex items-center gap-2">
                                 <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
-                                <span className="text-white/90 font-medium">
+                                <span className="text-white/80 text-sm">
                                   {item.metric}
                                 </span>
                               </div>
@@ -170,24 +170,9 @@ const CaseStudiesSection = () => {
 
           {/* Drag Indicator */}
           <div className="flex items-center justify-center mt-12">
-            <span className="text-white/70 text-sm font-medium tracking-wider uppercase">
-              Drag to Explore
+            <span className="text-white/70 text-xs font-small tracking-wider uppercase">
+              {`← Drag to Explore →`}
             </span>
-          </div>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: count }).map((_, index) => (
-              <button
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === current - 1
-                    ? 'bg-primary w-8'
-                    : 'bg-white/30 hover:bg-white/50'
-                }`}
-                onClick={() => api?.scrollTo(index)}
-              />
-            ))}
           </div>
         </div>
       </div>

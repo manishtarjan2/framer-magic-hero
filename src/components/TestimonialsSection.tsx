@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Star } from 'lucide-react';
 
 const TestimonialsSection = () => {
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisibleCards(testimonials.map((_, i) => i));
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const testimonials = [
     {
       quote: "AI automation transformed our operations by eliminating repetitive tasks and improving efficiency. Scaling our workflow has never been easier!",
@@ -13,7 +22,7 @@ const TestimonialsSection = () => {
       quote: "With AI, we cut manual work and improved accuracy. Our team now focuses on high-impact tasks while automation handles the rest!",
       author: "Sophia Martinez",
       position: "Operations Manager at NexaCorp",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=80&h=80&fit=crop&crop=face&auto=format"
+      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face&auto=format"
     },
     {
       quote: "AI-driven insights doubled our sales efficiency. We now engage leads at the right time with smarter, data-backed decisions!",
@@ -30,9 +39,9 @@ const TestimonialsSection = () => {
   ];
 
   const StarRating = () => (
-    <div className="flex gap-1 mb-6">
+    <div className="flex gap-1 mb-4">
       {[...Array(5)].map((_, i) => (
-        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
       ))}
     </div>
   );
@@ -41,41 +50,51 @@ const TestimonialsSection = () => {
     <section className="bg-black text-white py-20">
       <div className="mx-20"> {/* 5rem margin on each side */}
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
             Why Businesses Love<br />
             Our AI Solutions
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Real businesses, real results with AI automation.
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-none">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-none">
           {testimonials.map((testimonial, index) => (
             <div
-              key={index}
-              className="bg-gray-900 border border-gray-800 rounded-2xl p-8 hover:bg-gray-800 transition-colors duration-300"
-              style={{ width: '40rem', height: '20rem' }} {/* 10rem width, 5rem height */}
-            >
+                key={index}
+                className={`bg-black border border-gray-800 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:shadow-purple ${
+                  visibleCards.includes(index)
+                    ? index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'
+                    : 'opacity-0'
+                } ${
+                  index % 2 === 0 ? 'lg:justify-self-end' : 'lg:justify-self-start'
+                }`}
+                style={{ width: '26.67rem', height: '13.33rem' }}
+              >
               <StarRating />
               
-              <blockquote className="text-lg text-gray-300 mb-8 leading-relaxed">
+              <blockquote className={`text-gray-300 mb-6 leading-relaxed ${
+                index === 0 || index === testimonials.length - 1 ? 'text-sm' : 'text-base'
+              }`}>
                 "{testimonial.quote}"
               </blockquote>
               
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 <img
                   src={testimonial.avatar}
                   alt={testimonial.author}
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-10 h-10 rounded-full object-cover"
                 />
                 <div>
-                  <div className="font-semibold text-white text-lg">
+                  <div className={`font-semibold text-white ${
+                    index === 0 || index === testimonials.length - 1 ? 'text-sm' : 'text-base'
+                  }`}>
                     {testimonial.author}
                   </div>
-                  <div className="text-gray-400 text-sm">
+                  <div className="text-gray-400 text-xs">
                     {testimonial.position}
                   </div>
                 </div>
