@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import orbitLogo from "@/assets/orbit-logo.png";
 
 const Navigation = () => {
@@ -14,18 +15,18 @@ const Navigation = () => {
 
       {/* Navigation Links */}
       <div className="hidden md:flex items-center space-x-8">
-        <a href="#" className="text-orbit-text-primary hover:text-orbit-purple transition-colors font-medium">
+        <Link to="/" className="text-orbit-text-primary hover:text-orbit-purple transition-colors font-medium">
           Home
-        </a>
-        <a href="#" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
+        </Link>
+        <Link to="/about" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
           About
-        </a>
-        <a href="#" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
+        </Link>
+        <Link to="/blog" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
           Blog
-        </a>
-        <a href="#" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
+        </Link>
+        <Link to="/contact" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
           Contact
-        </a>
+        </Link>
       </div>
 
       {/* CTA Button */}

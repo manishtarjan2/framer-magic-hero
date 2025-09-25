@@ -28,7 +28,7 @@ const useIntersectionObserver = (options = {}) => {
     };
   }, [hasIntersected]);
 
-  return [ref, hasIntersected];
+  return [ref, hasIntersected] as const;
 };
 
 // Blog Card Component

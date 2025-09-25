@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 import orbitLogo from "@/assets/orbit-logo.png";
 
 const Footer = () => {
@@ -65,21 +66,18 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-orbit-text-primary font-medium">Pages</h4>
             <div className="space-y-3">
-              <a href="/" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
+              <Link to="/" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
                 Home
-              </a>
-              <a href="/about" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
+              </Link>
+              <Link to="/about" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
                 About
-              </a>
-              <a href="/blog" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
+              </Link>
+              <Link to="/blog" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
                 Blog
-              </a>
-              <a href="/contact" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
+              </Link>
+              <Link to="/contact" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
                 Contact
-              </a>
-              <a href="/404" className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm">
-                404
-              </a>
+              </Link>
             </div>
           </div>
           
