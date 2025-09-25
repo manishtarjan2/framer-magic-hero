@@ -1,7 +1,16 @@
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 import orbitLogo from "@/assets/orbit-logo.png";
 
 const Navigation = () => {
+  const location = useLocation();
+  
+  const getLinkClass = (path: string) => {
+    return location.pathname === path 
+      ? "text-orbit-text-primary hover:text-orbit-purple transition-colors font-medium"
+      : "text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium";
+  };
+
   return (
     <nav className="relative z-50 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto">
       {/* Logo */}
@@ -14,18 +23,18 @@ const Navigation = () => {
 
       {/* Navigation Links */}
       <div className="hidden md:flex items-center space-x-8">
-        <a href="#" className="text-orbit-text-primary hover:text-orbit-purple transition-colors font-medium">
+        <Link to="/" className={getLinkClass("/")}>
           Home
-        </a>
-        <a href="#" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
+        </Link>
+        <Link to="/about" className={getLinkClass("/about")}>
           About
-        </a>
-        <a href="#" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
+        </Link>
+        <Link to="/blog" className={getLinkClass("/blog")}>
           Blog
-        </a>
-        <a href="#" className="text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium">
+        </Link>
+        <Link to="/contact" className={getLinkClass("/contact")}>
           Contact
-        </a>
+        </Link>
       </div>
 
       {/* CTA Button */}

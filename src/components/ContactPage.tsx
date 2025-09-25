@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from './Footer';
 
 // Animated Background Orbs
 const AnimatedOrbs: React.FC = () => {
@@ -401,6 +402,7 @@ const ContactPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
 
       {/* CSS for animations */}
       <style>{`

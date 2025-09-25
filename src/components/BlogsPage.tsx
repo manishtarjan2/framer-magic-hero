@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Footer from './Footer';
 
 // Intersection Observer Hook
-const useIntersectionObserver = (options = {}) => {
+const useIntersectionObserver = (options = {}): [React.RefObject<HTMLDivElement>, boolean] => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -32,7 +33,13 @@ const useIntersectionObserver = (options = {}) => {
 };
 
 // Blog Card Component
-const BlogCard = ({ title, category, image, delay = 0 }) => {
+const BlogCard: React.FC<{
+  title: string;
+  category: string;
+  image: string;
+  delay?: number;
+  onReadMore?: () => void;
+}> = ({ title, category, image, delay = 0, onReadMore }) => {
   const [ref, hasIntersected] = useIntersectionObserver();
 
   return (
@@ -72,7 +79,10 @@ const BlogCard = ({ title, category, image, delay = 0 }) => {
         </h3>
         
         {/* Read More Link */}
-        <div className="flex items-center text-purple-400 font-medium text-sm group-hover:text-purple-300 transition-colors duration-300">
+        <div 
+          className="flex items-center text-purple-400 font-medium text-sm group-hover:text-purple-300 transition-colors duration-300 cursor-pointer"
+          onClick={onReadMore}
+        >
           <span>Read More</span>
           <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -84,13 +94,19 @@ const BlogCard = ({ title, category, image, delay = 0 }) => {
 };
 
 // Featured Blog Card Component
-const FeaturedBlogCard = ({ title, category, image, excerpt }) => {
+const FeaturedBlogCard: React.FC<{
+  title: string;
+  category: string;
+  image: string;
+  excerpt?: string;
+  onReadMore?: () => void;
+}> = ({ title, category, image, excerpt, onReadMore }) => {
   const [ref, hasIntersected] = useIntersectionObserver();
 
   return (
     <div
       ref={ref}
-      className={`col-span-1 md:col-span-2 bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:border-gray-700/50 transition-all duration-500 cursor-pointer group ${
+      className={`col-span-2 bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:border-gray-700/50 transition-all duration-500 cursor-pointer group ${
         hasIntersected 
           ? 'opacity-100 transform translate-y-0' 
           : 'opacity-0 transform translate-y-8'
@@ -128,7 +144,10 @@ const FeaturedBlogCard = ({ title, category, image, excerpt }) => {
           )}
           
           {/* Read More Link */}
-          <div className="flex items-center text-purple-400 font-medium group-hover:text-purple-300 transition-colors duration-300">
+          <div 
+            className="flex items-center text-purple-400 font-medium group-hover:text-purple-300 transition-colors duration-300 cursor-pointer"
+            onClick={onReadMore}
+          >
             <span>Read Full Article</span>
             <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -141,8 +160,9 @@ const FeaturedBlogCard = ({ title, category, image, excerpt }) => {
 };
 
 // Main Blog Page Component
-const BlogPage = () => {
+const BlogPage: React.FC = () => {
   const [headerRef, headerIntersected] = useIntersectionObserver();
+  const [selectedPost, setSelectedPost] = useState<typeof blogPosts[0] | null>(null);
 
   const blogPosts = [
     {
@@ -150,32 +170,43 @@ const BlogPage = () => {
       category: "Article",
       image: "linear-gradient(135deg, rgba(129, 74, 200, 0.8) 0%, rgba(75, 85, 180, 0.8) 50%, rgba(45, 95, 160, 0.8) 100%)",
       featured: true,
-      excerpt: "Explore how artificial intelligence is revolutionizing business processes and creating new opportunities for growth and efficiency."
+      excerpt: "Explore how artificial intelligence is revolutionizing business processes and creating new opportunities for growth and efficiency.",
+      date: "March 15, 2024"
     },
     {
       title: "5 Must-Have AI Tools to Streamline Your Business Tasks",
       category: "Resources",
-      image: "linear-gradient(135deg, rgba(223, 122, 254, 0.8) 0%, rgba(181, 96, 235, 0.8) 50%, rgba(139, 70, 216, 0.8) 100%)"
+      image: "linear-gradient(135deg, rgba(223, 122, 254, 0.8) 0%, rgba(181, 96, 235, 0.8) 50%, rgba(139, 70, 216, 0.8) 100%)",
+      excerpt: "Discover essential AI tools that can transform your daily business operations and boost productivity.",
+      date: "March 12, 2024"
     },
     {
       title: "Building Custom Chatbots: A Complete Guide for Businesses",
       category: "Tutorial",
-      image: "linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(99, 102, 241, 0.8) 50%, rgba(139, 92, 246, 0.8) 100%)"
+      image: "linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(99, 102, 241, 0.8) 50%, rgba(139, 92, 246, 0.8) 100%)",
+      excerpt: "Step-by-step guide to creating powerful chatbots tailored to your business needs.",
+      date: "March 10, 2024"
     },
     {
       title: "ROI of AI Implementation: Real Case Studies",
       category: "Case Study",
-      image: "linear-gradient(135deg, rgba(16, 185, 129, 0.8) 0%, rgba(52, 211, 153, 0.8) 50%, rgba(45, 212, 191, 0.8) 100%)"
+      image: "linear-gradient(135deg, rgba(16, 185, 129, 0.8) 0%, rgba(52, 211, 153, 0.8) 50%, rgba(45, 212, 191, 0.8) 100%)",
+      excerpt: "Learn from real-world examples how AI implementation drives measurable business results.",
+      date: "March 8, 2024"
     },
     {
       title: "Workflow Automation Best Practices for 2025",
       category: "Guide",
-      image: "linear-gradient(135deg, rgba(245, 158, 11, 0.8) 0%, rgba(251, 191, 36, 0.8) 50%, rgba(253, 224, 71, 0.8) 100%)"
+      image: "linear-gradient(135deg, rgba(245, 158, 11, 0.8) 0%, rgba(251, 191, 36, 0.8) 50%, rgba(253, 224, 71, 0.8) 100%)",
+      excerpt: "Master the art of workflow automation with proven strategies for the modern workplace.",
+      date: "March 5, 2024"
     },
     {
       title: "Integration Strategies: Connecting AI with Existing Systems",
       category: "Technical",
-      image: "linear-gradient(135deg, rgba(239, 68, 68, 0.8) 0%, rgba(248, 113, 113, 0.8) 50%, rgba(252, 165, 165, 0.8) 100%)"
+      image: "linear-gradient(135deg, rgba(239, 68, 68, 0.8) 0%, rgba(248, 113, 113, 0.8) 50%, rgba(252, 165, 165, 0.8) 100%)",
+      excerpt: "Technical insights on seamlessly integrating AI solutions with your current infrastructure.",
+      date: "March 3, 2024"
     }
   ];
 
@@ -211,6 +242,7 @@ const BlogPage = () => {
             category={blogPosts[0].category}
             image={blogPosts[0].image}
             excerpt={blogPosts[0].excerpt}
+            onReadMore={() => setSelectedPost(blogPosts[0])}
           />
 
           {/* Regular Blog Cards */}
@@ -221,6 +253,7 @@ const BlogPage = () => {
               category={post.category}
               image={post.image}
               delay={index * 100}
+              onReadMore={() => setSelectedPost(post)}
             />
           ))}
         </div>
@@ -255,6 +288,67 @@ const BlogPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Blog Post Modal */}
+      {selectedPost && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 rounded-lg max-w-4xl max-h-[90vh] overflow-y-auto">
+            <div className="relative">
+              <button
+                onClick={() => setSelectedPost(null)}
+                className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors z-10"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              
+              <div className="aspect-video relative overflow-hidden rounded-t-lg">
+                <div 
+                  className="w-full h-full"
+                  style={{
+                    background: selectedPost.image
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              </div>
+              
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="bg-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    {selectedPost.category}
+                  </span>
+                  <span className="text-gray-400 text-sm">{selectedPost.date}</span>
+                </div>
+                
+                <h1 className="text-3xl font-bold text-white mb-6">
+                  {selectedPost.title}
+                </h1>
+                
+                <div className="prose prose-invert max-w-none">
+                  <p className="text-gray-300 leading-relaxed mb-6">
+                    {selectedPost.excerpt || "This is a detailed article about " + selectedPost.title + ". The content would typically include comprehensive information, insights, and analysis related to the topic."}
+                  </p>
+                  
+                  <p className="text-gray-300 leading-relaxed mb-6">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                  
+                  <p className="text-gray-300 leading-relaxed mb-6">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                  
+                  <p className="text-gray-300 leading-relaxed">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      <Footer />
     </div>
   );
 };

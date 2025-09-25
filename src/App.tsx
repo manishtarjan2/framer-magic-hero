@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import HeroSection from "./components/HeroSection";
+import BlogPage from "./components/BlogsPage";
+import ContactPage from "./components/ContactPage";
 
 const queryClient = new QueryClient();
 
@@ -15,16 +17,18 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <div className="min-h-screen bg-orbit-dark">
-        <Navigation />
-        <BrowserRouter>
+      <BrowserRouter>
+        <div className="min-h-screen bg-orbit-dark">
+          <Navigation />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
