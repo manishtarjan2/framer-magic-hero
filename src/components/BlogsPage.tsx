@@ -29,7 +29,7 @@ const useIntersectionObserver = (options = {}): [React.RefObject<HTMLDivElement>
     };
   }, [hasIntersected]);
 
-  return [ref, hasIntersected];
+  return [ref, hasIntersected] as const;
 };
 
 // Blog Card Component

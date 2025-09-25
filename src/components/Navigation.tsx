@@ -4,9 +4,9 @@ import orbitLogo from "@/assets/orbit-logo.png";
 
 const Navigation = () => {
   const location = useLocation();
-  
+
   const getLinkClass = (path: string) => {
-    return location.pathname === path 
+    return location.pathname === path
       ? "text-orbit-text-primary hover:text-orbit-purple transition-colors font-medium"
       : "text-orbit-text-muted hover:text-orbit-purple transition-colors font-medium";
   };
