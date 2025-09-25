@@ -516,7 +516,7 @@ const Checklist = () => (
 // Main Process Section Component
 const ProcessSection = () => {
   return (
-    <section className="bg-black text-white py-12 px-4">
+  <section id="process" className="bg-black text-white py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

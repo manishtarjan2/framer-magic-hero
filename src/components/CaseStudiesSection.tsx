@@ -78,7 +78,7 @@ const CaseStudiesSection = () => {
   }, [api]);
 
   return (
-    <section className="py-24 bg-black from-gray-900 via-black to-gray-900 relative overflow-hidden">
+  <section id="case-studies" className="py-24 bg-black from-gray-900 via-black to-gray-900 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,119,198,0.1),transparent_50%)]" />
       

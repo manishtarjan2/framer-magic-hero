@@ -5,7 +5,7 @@ import orbitLogo from "@/assets/orbit-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-orbit-dark border-t border-orbit-purple/20 px-6 pt-6 pb-2">
+  <footer className="bg-orbit-dark border-t border-orbit-purple/20 px-6 pt-6 pb-2" style={{ zIndex: 50, position: 'relative' }}>
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-10">
@@ -67,36 +67,36 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-orbit-text-primary font-medium">Links</h4>
             <div className="space-y-3">
-              <a
-                href="#services"
+              <Link
+                to="/#services"
                 className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm"
               >
                 Services
-              </a>
-              <a
-                href="#process"
+              </Link>
+              <Link
+                to="/#process"
                 className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm"
               >
                 Process
-              </a>
-              <a
-                href="#case-studies"
+              </Link>
+              <Link
+                to="/#case-studies"
                 className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm"
               >
                 Case studies
-              </a>
-              <a
-                href="#benefits"
+              </Link>
+              <Link
+                to="/#benefits"
                 className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm"
               >
                 Benefits
-              </a>
-              <a
-                href="#pricing"
+              </Link>
+              <Link
+                to="/#pricing"
                 className="block text-orbit-text-muted hover:text-orbit-purple transition-colors text-sm"
               >
                 Pricing
-              </a>
+              </Link>
             </div>
           </div>
 
