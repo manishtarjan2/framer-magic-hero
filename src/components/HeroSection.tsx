@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import starfieldBg from "@/assets/starfield-bg.jpg";
 import { useWritingEffect } from '@/hooks/use-writing-effect';
@@ -258,58 +259,62 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div ref={buttonsReveal.ref as React.RefObject<HTMLDivElement>} className={`flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4 ${buttonsReveal.isRevealed ? 'slide-reveal-buttons' : 'opacity-0'}`}>
-          <Button 
-            variant="orbit"
-            size="lg"
-            className="font-medium text-sm sm:text-base lg:text-lg flex items-center space-x-2 w-full sm:w-auto relative z-30"
-            style={{
-              boxSizing: 'border-box',
-              width: 'min-content',
-              height: 'min-content',
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '8px 12px',
-              boxShadow: '0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15), 0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14), 0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.14), 0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.13), 0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.1), 0px 30px 30px -3.75px rgba(0, 0, 0, 0.05)',
-              overflow: 'visible',
-              alignContent: 'center',
-              flexWrap: 'nowrap',
-              gap: '10px',
-              position: 'relative',
-              borderRadius: '6px',
-              border: '1px solid var(--token-6839e435-35f3-4ab3-b723-e98c27e525bc, rgba(255, 255, 255, 0.1))'
-            }}
-          >
-            <span>Get in touch</span>
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </Button>
+          <Link to="/contact" style={{ textDecoration: 'none' }}>
+            <Button 
+              variant="orbit"
+              size="lg"
+              className="font-medium text-sm sm:text-base flex items-center w-full sm:w-auto relative z-30"
+              style={{
+                boxSizing: 'border-box',
+                width: 'min-content',
+                height: 'min-content',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '8px 12px',
+                boxShadow: '0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15), 0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14), 0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.14), 0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.13), 0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.1), 0px 30px 30px -3.75px rgba(0, 0, 0, 0.05)',
+                overflow: 'visible',
+                alignContent: 'center',
+                flexWrap: 'nowrap',
+                gap: '7px',
+                position: 'relative',
+                borderRadius: '4px',
+                border: '1px solid var(--token-6839e435-35f3-4ab3-b723-e98c27e525bc, rgba(255, 255, 255, 0.1))'
+              }}
+            >
+              <span>Get in touch</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </Button>
+          </Link>
           
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="font-medium text-sm sm:text-base lg:text-lg w-full sm:w-auto relative z-30"
-            style={{
-              boxSizing: 'border-box',
-              width: 'min-content',
-              height: 'min-content',
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '8px 12px',
-              boxShadow: '0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15), 0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14), 0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.14), 0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.13), 0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.1), 0px 30px 30px -3.75px rgba(0, 0, 0, 0.05)',
-              overflow: 'visible',
-              alignContent: 'center',
-              flexWrap: 'nowrap',
-              gap: '10px',
-              position: 'relative',
-              borderRadius: '6px',
-              border: '1px solid var(--token-6839e435-35f3-4ab3-b723-e98c27e525bc, rgba(255, 255, 255, 0.1))'
-            }}
-          >
-            View services
-          </Button>
+          <a href="#services" style={{ textDecoration: 'none' }}>
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="font-medium text-sm sm:text-base w-full sm:w-auto relative z-30"
+              style={{
+                boxSizing: 'border-box',
+                width: 'min-content',
+                height: 'min-content',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '8px 12px',
+                boxShadow: '0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15), 0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14), 0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.14), 0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.13), 0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.1), 0px 30px 30px -3.75px rgba(0, 0, 0, 0.05)',
+                overflow: 'visible',
+                alignContent: 'center',
+                flexWrap: 'nowrap',
+                gap: '7px',
+                position: 'relative',
+                borderRadius: '4px',
+                border: '1px solid var(--token-6839e435-35f3-4ab3-b723-e98c27e525bc, rgba(255, 255, 255, 0.1))'
+              }}
+            >
+              View services
+            </Button>
+          </a>
         </div>
       </div>
 

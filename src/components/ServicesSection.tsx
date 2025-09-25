@@ -154,7 +154,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="relative bg-black py-12 sm:py-16 lg:py-24 px-4 sm:px-6 overflow-hidden">
+    <section id="services" ref={sectionRef} className="relative bg-black py-12 sm:py-16 lg:py-24 px-4 sm:px-6 overflow-hidden">
       {/* Grid pattern background */}
       <div 
         className="absolute inset-0 opacity-10"

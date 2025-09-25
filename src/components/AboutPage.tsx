@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import Footer from './Footer';
 
 // Animated Background Component
@@ -234,9 +235,11 @@ const AboutPage = () => {
                   Our mission remains unchanged: to democratize AI technology and make intelligent automation accessible to businesses of all sizes.
                 </p>
               </div>
-              <Button variant="orbit" className="mt-6">
-                Learn More About Our Services
-              </Button>
+              <Link to="/#services" style={{ textDecoration: 'none' }}>
+                <Button variant="orbit" className="mt-6">
+                  Learn More About Our Services
+                </Button>
+              </Link>
             </div>
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-orbit-purple/20 to-orbit-purple/5 rounded-2xl flex items-center justify-center">
@@ -318,12 +321,11 @@ const AboutPage = () => {
               Join hundreds of businesses that have already transformed their operations with our AI automation solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="orbit" className="px-8 py-3">
-                Schedule a Consultation
-              </Button>
-              <Button variant="outline" className="px-8 py-3 border-orbit-purple text-orbit-purple hover:bg-orbit-purple hover:text-white">
-                View Our Work
-              </Button>
+              <Link to="/contact" style={{ textDecoration: 'none' }}>
+                <Button variant="orbit" className="px-8 py-3">
+                  Book a Free Consultation
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

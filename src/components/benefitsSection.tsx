@@ -40,7 +40,7 @@ const BenefitsSection = () => {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-block bg-gray-900/50 text-gray-300 px-3 py-1 rounded-full text-sm mb-4">
+          <div className="inline-block bg-black text-gray-300 px-3 py-1 rounded-full text-sm mb-4 border border-white-1px">
             Benefits
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">

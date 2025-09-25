@@ -12,7 +12,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="relative z-50 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto h-[60px]">
+    <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto h-[60px] bg-orbit-dark bg-opacity-95 backdrop-blur-md shadow-md">
       {/* Logo */}
       <div
         style={{
@@ -55,7 +55,7 @@ const Navigation = () => {
 
       {/* CTA Button */}
       <div className="flex items-center h-full">
-        <Button variant="orbit" className="px-6 py-2 rounded-xl font-medium h-[40px] flex items-center">
+        <Button variant="orbit" className="px-6 py-2 rounded-lg font-medium h-[40px] flex items-center">
           Book a call
         </Button>
       </div>

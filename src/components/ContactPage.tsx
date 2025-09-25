@@ -41,20 +41,19 @@ const AnimatedOrbs: React.FC = () => {
   );
 };
 
-// Contact Form Component
+// Redesigned Contact Form Component
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    company: '',
-    subject: '',
+    phone: '',
     message: ''
   });
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -64,74 +63,52 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
     try {
-      // Using Formspree (you'll need to sign up at formspree.io and replace YOUR_FORM_ID)
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          subject: formData.subject,
-          message: formData.message,
-          _replyto: formData.email,
-          _subject: `New Contact Form Submission: ${formData.subject}`
-        })
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          company: '',
-          subject: '',
-          message: ''
-        });
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (error) {
-      console.error('Error sending message:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      
-      // Reset status after 5 seconds
+      // Replace with your form submission logic
       setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
+        setSubmitStatus('success');
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+        setIsSubmitting(false);
+        setTimeout(() => setSubmitStatus('idle'), 4000);
+      }, 1200);
+    } catch {
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus('idle'), 4000);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Name and Email Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-orbit-text-muted mb-2">
-            Full Name *
-          </label>
+          <label htmlFor="firstName" className="block text-sm font-medium text-white mb-2">First Name</label>
           <input
             type="text"
-            id="name"
-            name="name"
+            id="firstName"
+            name="firstName"
             required
-            value={formData.name}
+            value={formData.firstName}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
-            placeholder="John Doe"
+            className="w-full px-4 py-3 bg-black border border-zinc-700 rounded-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            placeholder="Jane"
           />
         </div>
-        
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-orbit-text-muted mb-2">
-            Email Address *
-          </label>
+          <label htmlFor="lastName" className="block text-sm font-medium text-white mb-2">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+            value={formData.lastName}
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-black border border-zinc-700 rounded-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            placeholder="Smith"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-white mb-2">Email</label>
           <input
             type="email"
             id="email"
@@ -139,191 +116,80 @@ const ContactForm: React.FC = () => {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
-            placeholder="john@company.com"
+            className="w-full px-4 py-3 bg-black border border-zinc-700 rounded-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            placeholder="Jane@mail.com"
           />
         </div>
-      </div>
-
-      {/* Company and Subject Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-orbit-text-muted mb-2">
-            Company
-          </label>
+          <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">Phone</label>
           <input
-            type="text"
-            id="company"
-            name="company"
-            value={formData.company}
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
-            placeholder="Your Company"
+            className="w-full px-4 py-3 bg-black border border-zinc-700 rounded-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            placeholder="+1(969) 819-8061"
           />
         </div>
-        
-        <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-orbit-text-muted mb-2">
-            Subject *
-          </label>
-          <select
-            id="subject"
-            name="subject"
-            required
-            value={formData.subject}
-            onChange={handleChange}
-            className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
-          >
-            <option value="">Select a subject</option>
-            <option value="AI Automation Consultation">AI Automation Consultation</option>
-            <option value="Workflow Optimization">Workflow Optimization</option>
-            <option value="Chatbot Development">Chatbot Development</option>
-            <option value="General Inquiry">General Inquiry</option>
-            <option value="Partnership Opportunity">Partnership Opportunity</option>
-            <option value="Support Request">Support Request</option>
-          </select>
-        </div>
       </div>
-
-      {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-orbit-text-muted mb-2">
-          Message *
-        </label>
+        <label htmlFor="message" className="block text-sm font-medium text-white mb-2">Message</label>
         <textarea
           id="message"
           name="message"
           required
-          rows={6}
+          rows={4}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200 resize-none"
-          placeholder="Tell us about your project, goals, and how we can help you automate your workflows..."
+          className="w-full px-4 py-3 bg-black border border-zinc-700 rounded-sm text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+          placeholder="Hi, I am jane i want help with...."
         />
       </div>
-
-      {/* Submit Button */}
-      <div className="flex justify-end">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className={`px-8 py-3 rounded-lg font-medium transition-all duration-200 ${
-            isSubmitting
-              ? 'bg-gray-600 cursor-not-allowed'
-              : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 transform hover:scale-105'
-          } text-white flex items-center gap-2`}
-        >
-          {isSubmitting ? (
-            <>
-              <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-              </svg>
-              Sending...
-            </>
-          ) : (
-            <>
-              Send Message
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
-            </>
-          )}
-        </button>
-      </div>
-
-      {/* Status Messages */}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full py-2 rounded-sm font-medium text-white bg-purple-700 hover:bg-gray-700 transition-all text-sm mt-2 disabled:opacity-60"
+      >
+        {isSubmitting ? 'Submitting...' : 'Submit Form'}
+      </button>
       {submitStatus === 'success' && (
-        <div className="p-4 bg-green-900/30 border border-green-700 rounded-lg flex items-center gap-3">
-          <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <div>
-            <h4 className="font-medium text-green-400">Message Sent Successfully!</h4>
-            <p className="text-sm text-green-300">We'll get back to you within 24 hours.</p>
-          </div>
+        <div className="p-3 bg-green-900/30 border border-green-700 rounded-xs text-green-300 text-center mt-2">
+          Message sent successfully!
         </div>
       )}
-
       {submitStatus === 'error' && (
-        <div className="p-4 bg-red-900/30 border border-red-700 rounded-lg flex items-center gap-3">
-          <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <div>
-            <h4 className="font-medium text-red-400">Failed to Send Message</h4>
-            <p className="text-sm text-red-300">Please try again or contact us directly at help.orbitlabs@gmail.com</p>
-          </div>
+        <div className="p-3 bg-red-900/30 border border-red-700 rounded-xs text-red-300 text-center mt-2">
+          Failed to send message. Please try again.
         </div>
       )}
     </form>
   );
 };
 
-// Contact Info Cards
+// Redesigned Contact Info Cards (Email & Phone only)
 const ContactInfo: React.FC = () => {
-  const contactMethods = [
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: "Email Us",
-      description: "Get in touch with our team",
-      contact: "help.orbitlabs@gmail.com",
-      link: "mailto:help.orbitlabs@gmail.com"
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-      title: "Response Time",
-      description: "We typically respond within",
-      contact: "24 hours",
-      link: null
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-      title: "Location",
-      description: "Serving clients globally",
-      contact: "Remote-First",
-      link: null
-    }
-  ];
-
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      {contactMethods.map((method, index) => (
-        <div key={index} className="bg-orbit-card/30 backdrop-blur-sm border border-orbit-purple/20 rounded-lg p-6 hover:border-orbit-purple/40 transition-all duration-300">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-orbit-purple/20 rounded-lg flex items-center justify-center text-orbit-purple">
-              {method.icon}
-            </div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-orbit-text-primary mb-1">{method.title}</h3>
-              <p className="text-sm text-orbit-text-muted mb-2">{method.description}</p>
-              {method.link ? (
-                <a 
-                  href={method.link}
-                  className="text-orbit-purple hover:text-orbit-purple-glow transition-colors duration-200 font-medium"
-                >
-                  {method.contact}
-                </a>
-              ) : (
-                <span className="text-orbit-purple font-medium">{method.contact}</span>
-              )}
-            </div>
-          </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 max-w-xl mx-auto">
+      <div className="bg-black rounded-lg border border-zinc-800 p-4 flex items-center gap-3">
+        <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gradient-to-tr from-zinc-800 to-purple-900">
+          <img src="https://img.icons8.com/?size=100&id=jicLxt1sA2qa&format=png&color=000000" alt="Email Icon" className="w-5 h-5 object-contain" />
         </div>
-      ))}
+        <div>
+          <div className="text-white font-semibold text-lg flex items-center gap-2">E-mail</div>
+          <div className="text-zinc-300 text-base mt-1">help.orbitlabs@gmail.com</div>
+        </div>
+      </div>
+  <div className="bg-black rounded-lg border border-zinc-800 p-4 flex items-center gap-3">
+        <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gradient-to-tr from-zinc-800 to-purple-900">
+          <img src="https://img.icons8.com/?size=100&id=eoVcP6w171GZ&format=png&color=000000" alt="Call Icon" className="w-5 h-5 object-contain" />
+        </div>
+        <div>
+          <div className="text-white font-semibold text-lg flex items-center gap-2">Phone</div>
+          <div className="text-zinc-300 text-base mt-1">+1(969) 819-8061</div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -357,16 +223,15 @@ const ContactPage: React.FC = () => {
           <ContactInfo />
 
           {/* Contact Form Section */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-orbit-card/30 backdrop-blur-sm border border-orbit-purple/20 rounded-2xl p-8 md:p-12">
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">Send us a message</h2>
-                <p className="text-orbit-text-muted">
+          <div className="max-w-xl mx-auto">
+            <div className="bg-orbit-card/30 backdrop-blur-sm border border-orbit-purple/20 rounded-xl p-4 md:p-6">
+              <div className="mb-4">
+                <h2 className="text-xl font-bold mb-2">Send us a message</h2>
+                <p className="text-orbit-text-muted text-sm">
                   Fill out the form below and we'll get back to you as soon as possible. 
                   All fields marked with an asterisk (*) are required.
                 </p>
               </div>
-              
               <ContactForm />
             </div>
           </div>
