@@ -45,7 +45,7 @@ const BlogCard: React.FC<{
   return (
     <div
       ref={ref}
-      className={`bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:border-gray-700/50 transition-all duration-500 cursor-pointer group ${
+      className={`bg-orbit-card backdrop-blur-sm border border-orbit-purple/20 rounded-2xl overflow-hidden hover:border-orbit-purple/40 transition-all duration-500 cursor-pointer group ${
         hasIntersected 
           ? 'opacity-100 transform translate-y-0' 
           : 'opacity-0 transform translate-y-8'
@@ -62,11 +62,11 @@ const BlogCard: React.FC<{
             background: image
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-orbit-dark/80 via-transparent to-transparent" />
         
         {/* Category Badge */}
         <div className="absolute top-4 left-4">
-          <span className="bg-gray-900/80 backdrop-blur-sm text-gray-300 px-3 py-1 rounded-full text-xs font-medium border border-gray-700/50">
+          <span className="bg-orbit-dark/80 backdrop-blur-sm text-orbit-text-muted px-3 py-1 rounded-full text-xs font-medium border border-orbit-purple/20">
             {category}
           </span>
         </div>
@@ -74,13 +74,13 @@ const BlogCard: React.FC<{
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl font-bold text-white mb-3 leading-tight group-hover:text-purple-400 transition-colors duration-300">
+        <h3 className="text-xl font-bold text-orbit-text-primary mb-3 leading-tight group-hover:text-orbit-purple transition-colors duration-300">
           {title}
         </h3>
         
         {/* Read More Link */}
         <div 
-          className="flex items-center text-purple-400 font-medium text-sm group-hover:text-purple-300 transition-colors duration-300 cursor-pointer"
+          className="flex items-center text-orbit-purple font-medium text-sm group-hover:text-orbit-purple-glow transition-colors duration-300 cursor-pointer"
           onClick={onReadMore}
         >
           <span>Read More</span>
@@ -106,7 +106,7 @@ const FeaturedBlogCard: React.FC<{
   return (
     <div
       ref={ref}
-      className={`col-span-2 bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:border-gray-700/50 transition-all duration-500 cursor-pointer group ${
+      className={`col-span-2 bg-orbit-card backdrop-blur-sm border border-orbit-purple/20 rounded-2xl overflow-hidden hover:border-orbit-purple/40 transition-all duration-500 cursor-pointer group ${
         hasIntersected 
           ? 'opacity-100 transform translate-y-0' 
           : 'opacity-0 transform translate-y-8'
@@ -121,11 +121,11 @@ const FeaturedBlogCard: React.FC<{
               background: image
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-gray-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-orbit-dark/20 via-transparent to-orbit-dark/80" />
           
           {/* Category Badge */}
           <div className="absolute top-4 left-4">
-            <span className="bg-gray-900/80 backdrop-blur-sm text-gray-300 px-3 py-1 rounded-full text-xs font-medium border border-gray-700/50">
+            <span className="bg-orbit-dark/80 backdrop-blur-sm text-orbit-text-muted px-3 py-1 rounded-full text-xs font-medium border border-orbit-purple/20">
               {category}
             </span>
           </div>
@@ -133,19 +133,19 @@ const FeaturedBlogCard: React.FC<{
 
         {/* Content Section */}
         <div className="p-8 flex flex-col justify-center">
-          <h3 className="text-2xl font-bold text-white mb-4 leading-tight group-hover:text-purple-400 transition-colors duration-300">
+          <h3 className="text-2xl font-bold text-orbit-text-primary mb-4 leading-tight group-hover:text-orbit-purple transition-colors duration-300">
             {title}
           </h3>
           
           {excerpt && (
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-orbit-text-muted mb-6 leading-relaxed">
               {excerpt}
             </p>
           )}
           
           {/* Read More Link */}
           <div 
-            className="flex items-center text-purple-400 font-medium group-hover:text-purple-300 transition-colors duration-300 cursor-pointer"
+            className="flex items-center text-orbit-purple font-medium group-hover:text-orbit-purple-glow transition-colors duration-300 cursor-pointer"
             onClick={onReadMore}
           >
             <span>Read Full Article</span>
@@ -211,7 +211,7 @@ const BlogPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-orbit-dark text-orbit-text-primary">
       <div className="container mx-auto px-4 py-16">
         {/* Header Section */}
         <div 
@@ -222,13 +222,13 @@ const BlogPage: React.FC = () => {
               : 'opacity-0 transform translate-y-8'
           }`}
         >
-          <div className="inline-block bg-gray-900/50 text-gray-300 px-4 py-2 rounded-full text-sm mb-6">
+          <div className="inline-block bg-orbit-card border border-orbit-purple/20 text-orbit-text-muted px-4 py-2 rounded-full text-sm mb-6">
             Blog
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
             Unlock AI Insights with Us
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-orbit-text-muted text-lg max-w-2xl mx-auto leading-relaxed">
             Stay informed with the latest AI trends, insights, and strategies to drive
             innovation and business growth.
           </p>
@@ -270,16 +270,16 @@ const BlogPage: React.FC = () => {
 
         {/* Newsletter Subscription */}
         <div className="mt-20 text-center">
-          <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-12 max-w-2xl mx-auto">
+          <div className="bg-orbit-card/30 backdrop-blur-sm border border-orbit-purple/20 rounded-2xl p-12 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-            <p className="text-gray-400 mb-8">
+            <p className="text-orbit-text-muted mb-8">
               Get the latest AI insights delivered straight to your inbox. No spam, just valuable content.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                className="flex-1 px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
               />
               <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-6 py-3 rounded-lg font-medium transform hover:scale-105 transition-all duration-200 whitespace-nowrap">
                 Subscribe

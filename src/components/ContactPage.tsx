@@ -113,7 +113,7 @@ const ContactForm: React.FC = () => {
       {/* Name and Email Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="name" className="block text-sm font-medium text-orbit-text-muted mb-2">
             Full Name *
           </label>
           <input
@@ -123,13 +123,13 @@ const ContactForm: React.FC = () => {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
             placeholder="John Doe"
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-orbit-text-muted mb-2">
             Email Address *
           </label>
           <input
@@ -139,7 +139,7 @@ const ContactForm: React.FC = () => {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
             placeholder="john@company.com"
           />
         </div>
@@ -148,7 +148,7 @@ const ContactForm: React.FC = () => {
       {/* Company and Subject Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="company" className="block text-sm font-medium text-orbit-text-muted mb-2">
             Company
           </label>
           <input
@@ -157,13 +157,13 @@ const ContactForm: React.FC = () => {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
             placeholder="Your Company"
           />
         </div>
         
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="subject" className="block text-sm font-medium text-orbit-text-muted mb-2">
             Subject *
           </label>
           <select
@@ -172,7 +172,7 @@ const ContactForm: React.FC = () => {
             required
             value={formData.subject}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200"
           >
             <option value="">Select a subject</option>
             <option value="AI Automation Consultation">AI Automation Consultation</option>
@@ -187,7 +187,7 @@ const ContactForm: React.FC = () => {
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-orbit-text-muted mb-2">
           Message *
         </label>
         <textarea
@@ -197,7 +197,7 @@ const ContactForm: React.FC = () => {
           rows={6}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none"
+          className="w-full px-4 py-3 bg-orbit-card border border-orbit-purple/20 rounded-lg text-orbit-text-primary placeholder:text-orbit-text-muted focus:outline-none focus:ring-2 focus:ring-orbit-purple focus:border-transparent transition-all duration-200 resize-none"
           placeholder="Tell us about your project, goals, and how we can help you automate your workflows..."
         />
       </div>
@@ -302,23 +302,23 @@ const ContactInfo: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
       {contactMethods.map((method, index) => (
-        <div key={index} className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6 hover:border-purple-500/50 transition-all duration-300">
+        <div key={index} className="bg-orbit-card/30 backdrop-blur-sm border border-orbit-purple/20 rounded-lg p-6 hover:border-orbit-purple/40 transition-all duration-300">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-purple-600/20 rounded-lg flex items-center justify-center text-purple-400">
+            <div className="w-12 h-12 bg-orbit-purple/20 rounded-lg flex items-center justify-center text-orbit-purple">
               {method.icon}
             </div>
             <div className="flex-1">
-              <h3 className="font-semibold text-white mb-1">{method.title}</h3>
-              <p className="text-sm text-gray-400 mb-2">{method.description}</p>
+              <h3 className="font-semibold text-orbit-text-primary mb-1">{method.title}</h3>
+              <p className="text-sm text-orbit-text-muted mb-2">{method.description}</p>
               {method.link ? (
                 <a 
                   href={method.link}
-                  className="text-purple-400 hover:text-purple-300 transition-colors duration-200 font-medium"
+                  className="text-orbit-purple hover:text-orbit-purple-glow transition-colors duration-200 font-medium"
                 >
                   {method.contact}
                 </a>
               ) : (
-                <span className="text-purple-400 font-medium">{method.contact}</span>
+                <span className="text-orbit-purple font-medium">{method.contact}</span>
               )}
             </div>
           </div>
@@ -331,14 +331,14 @@ const ContactInfo: React.FC = () => {
 // Main Contact Page Component
 const ContactPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className="min-h-screen bg-orbit-dark text-orbit-text-primary relative">
       <AnimatedOrbs />
       
       <div className="relative z-10">
         <div className="container mx-auto px-4 py-16">
           {/* Header Section */}
           <div className="text-center mb-16">
-            <div className="inline-block bg-gray-900/50 text-gray-300 px-4 py-2 rounded-full text-sm mb-6">
+            <div className="inline-block bg-orbit-card border border-orbit-purple/20 text-orbit-text-muted px-4 py-2 rounded-full text-sm mb-6">
               Get In Touch
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
@@ -347,7 +347,7 @@ const ContactPage: React.FC = () => {
                 Your Workflow?
               </span>
             </h1>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-orbit-text-muted text-lg max-w-2xl mx-auto leading-relaxed">
               Let's discuss how AI automation can streamline your business processes, 
               boost efficiency, and drive growth. Our team is ready to help you get started.
             </p>
@@ -358,10 +358,10 @@ const ContactPage: React.FC = () => {
 
           {/* Contact Form Section */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8 md:p-12">
+            <div className="bg-orbit-card/30 backdrop-blur-sm border border-orbit-purple/20 rounded-2xl p-8 md:p-12">
               <div className="mb-8">
                 <h2 className="text-2xl font-bold mb-4">Send us a message</h2>
-                <p className="text-gray-400">
+                <p className="text-orbit-text-muted">
                   Fill out the form below and we'll get back to you as soon as possible. 
                   All fields marked with an asterisk (*) are required.
                 </p>
@@ -389,11 +389,11 @@ const ContactPage: React.FC = () => {
                   answer: "Yes, we offer comprehensive support and maintenance packages to ensure your automation solutions continue to perform optimally."
                 }
               ].map((faq, index) => (
-                <details key={index} className="bg-gray-800/30 rounded-lg border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300">
-                  <summary className="p-6 cursor-pointer font-medium text-white hover:text-purple-400 transition-colors duration-200">
+                <details key={index} className="bg-orbit-card/30 rounded-lg border border-orbit-purple/20 hover:border-orbit-purple/40 transition-all duration-300">
+                  <summary className="p-6 cursor-pointer font-medium text-orbit-text-primary hover:text-orbit-purple transition-colors duration-200">
                     {faq.question}
                   </summary>
-                  <div className="px-6 pb-6 text-gray-400 leading-relaxed">
+                  <div className="px-6 pb-6 text-orbit-text-muted leading-relaxed">
                     {faq.answer}
                   </div>
                 </details>
