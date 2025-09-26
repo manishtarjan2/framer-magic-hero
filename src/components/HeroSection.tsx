@@ -210,7 +210,8 @@ const HeroSection = () => {
           gap: '10px',
           aspectRatio: '1 / 1',
           borderRadius: '363px',
-          animationDuration: '8s'
+          animationDuration: '8s',
+          filter: 'blur(1px)'
         }}
       ></div>
       
@@ -228,7 +229,8 @@ const HeroSection = () => {
           overflow: 'hidden',
           aspectRatio: '1 / 1',
           borderRadius: '263px',
-          animationDuration: '6s'
+          animationDuration: '6s',
+          filter: 'blur(1px)'
         }}
       ></div>
 
