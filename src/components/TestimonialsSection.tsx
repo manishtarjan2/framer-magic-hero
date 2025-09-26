@@ -48,7 +48,7 @@ const TestimonialsSection = () => {
 
   return (
     <section className="bg-black text-white py-20">
-      <div className="mx-20"> {/* 5rem margin on each side */}
+      <div className="max-w-7xl mx-auto px-6"> {/* responsive container */}
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
@@ -61,19 +61,18 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-none">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {testimonials.map((testimonial, index) => (
             <div
-                key={index}
-                className={`bg-black border border-gray-800 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:shadow-purple ${
-                  visibleCards.includes(index)
-                    ? index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'
-                    : 'opacity-0'
-                } ${
-                  index % 2 === 0 ? 'lg:justify-self-end' : 'lg:justify-self-start'
-                }`}
-                style={{ width: '26.67rem', height: '13.33rem' }}
-              >
+              key={index}
+              className={`bg-black border border-gray-800 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:shadow-purple w-full ${
+                visibleCards.includes(index)
+                  ? index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'
+                  : 'opacity-0'
+              } ${
+                index % 2 === 0 ? 'lg:justify-self-end' : 'lg:justify-self-start'
+              }`}
+            >
               <StarRating />
               
               <blockquote className={`text-gray-300 mb-6 leading-relaxed ${
