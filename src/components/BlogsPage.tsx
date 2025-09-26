@@ -155,14 +155,14 @@ const BlogPage: React.FC = () => {
     {
       title: "5 Must-Have AI Tools to Streamline Your Business Tasks",
       category: "Resources",
-      image: "https://images.unsplash.com/photo-1648737964691-414f2ef7494e?auto=format&fit=crop&w=1400&q=80",
+      image: "https://th.bing.com/th/id/OIP.ER0Ce2g7Km6tGgOdbIp_OAHaEO?w=287&h=180&c=7&r=0&o=7&dpr=1.7&pid=1.7&rm=3",
       excerpt: "Discover essential AI tools that can transform your daily business operations and boost productivity.",
       date: "March 12, 2024"
     },
     {
       title: "Building Custom Chatbots: A Complete Guide for Businesses",
       category: "Tutorial",
-      image: "https://images.unsplash.com/photo-1648737964186-4c87433f3a3e?auto=format&fit=crop&w=1400&q=80",
+      image: "src\assets\customBot.jpeg",
       excerpt: "Step-by-step guide to creating powerful chatbots tailored to your business needs.",
       date: "March 10, 2024"
     },
