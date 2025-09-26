@@ -85,7 +85,7 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed top-[60px] left-0 right-0 bg-orbit-dark border-t border-gray-800 md:hidden z-40 animate-in slide-in-from-top duration-200">
+        <div className="fixed top-[60px] left-0 right-0 bg-orbit-dark/60 backdrop-blur-sm border-t border-gray-800 md:hidden z-40 animate-in slide-in-from-top duration-200">
           <div className="flex flex-col px-4 py-6 space-y-4">
             <Link 
               to="/" 
