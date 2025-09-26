@@ -169,6 +169,24 @@ const ServicesSection = () => {
         }}
       />
       
+      {/* Custom CSS for animations */}
+      <style>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes reverse-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(-360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 5s linear infinite;
+        }
+        .animate-reverse-spin {
+          animation: reverse-spin 5s linear infinite;
+        }
+      `}</style>
+      
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
         {/* Services Grid - 2 Columns */}
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 sm:gap-x-0 gap-y-24 auto-rows-fr justify-items-center w-full max-w-6xl">
@@ -251,6 +269,76 @@ const ServicesSection = () => {
                       {service.description}
                     </p>
                   </div>
+                ) : service.type === 'assistant-animation' ? (
+                  <div className="h-full">
+                    {/* AI Assistant Personal Assistant Interface */}
+                    <div className="w-full h-full bg-black/80 rounded-2xl p-6 flex flex-col items-center relative border border-gray-800">
+                      {/* Animated Orb */}
+                      <div className="relative mb-6 flex items-center justify-center">
+                        <div 
+                          className="w-16 h-16 rounded-full animate-spin-slow relative"
+                          style={{
+                            background: "linear-gradient(141deg, rgb(223, 122, 254) 13%, rgba(201, 110, 240, 0) 35%, rgba(164, 92, 219, 0) 64%, rgb(129, 74, 200) 88%)",
+                            filter: "blur(1px)"
+                          }}
+                        />
+                        <div 
+                          className="absolute w-10 h-10 rounded-full animate-reverse-spin"
+                          style={{
+                            background: "linear-gradient(141deg, rgb(223, 122, 254) 13%, rgba(201, 110, 240, 0) 35%, rgba(164, 92, 219, 0) 64%, rgb(129, 74, 200) 88%)",
+                            filter: "blur(1px)"
+                          }}
+                        />
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-white font-semibold mb-2 text-center">What can I help with?</h3>
+                      <p className="text-gray-400 text-sm text-center mb-6 max-w-xs leading-relaxed">
+                        Weather you want help in customer handling or make changes in your system just give me command
+                      </p>
+                      
+                      {/* Input Area */}
+                      <div className="w-full border border-gray-700 rounded-lg p-3 mb-4">
+                        <div className="flex items-center justify-between">
+                          <div className="text-gray-400 text-sm flex-1">
+                            {visibleCards.has(2) && (
+                              <span className="animate-pulse">
+                                {typingText}
+                                <span className="text-purple-400">|</span>
+                              </span>
+                            )}
+                          </div>
+                          <div className="w-6 h-6 bg-white/5 border border-gray-700 rounded flex items-center justify-center ml-2">
+                            <div className="w-3 h-3 text-purple-400">▶</div>
+                          </div>
+                        </div>
+                        
+                        {/* Add Document Badge */}
+                        <div className="flex mt-2">
+                          <span className="inline-flex items-center space-x-1 px-2 py-1 bg-white/5 border border-gray-700 rounded-lg text-xs text-gray-400">
+                            <span className="text-purple-400">+</span>
+                            <span>Add document</span>
+                          </span>
+                        </div>
+                      </div>
+                      
+                      {/* Action Buttons */}
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        <span className="inline-flex items-center space-x-1 px-3 py-1 bg-white/5 border border-gray-700 rounded-lg text-xs text-gray-300">
+                          <span className="text-purple-400">📊</span>
+                          <span>Analyze</span>
+                        </span>
+                        <span className="inline-flex items-center space-x-1 px-3 py-1 bg-white/5 border border-gray-700 rounded-lg text-xs text-gray-300">
+                          <span className="text-purple-400">🖼️</span>
+                          <span>Generate Image</span>
+                        </span>
+                        <span className="inline-flex items-center space-x-1 px-3 py-1 bg-white/5 border border-gray-700 rounded-lg text-xs text-gray-300">
+                          <span className="text-purple-400">🔍</span>
+                          <span>Research</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 )  : service.type === 'assistant-text' ? (
                   <div className="h-full flex flex-col justify-center">
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 leading-tight">
@@ -262,31 +350,36 @@ const ServicesSection = () => {
                   </div>
                 ) : service.type === 'sales-animation' ? (
                   <div className="h-full">
-                    {/* Email Sending Interface */}
-                    <div className="w-full h-full bg-black/80 rounded-2xl p-6 flex flex-col">
+                    {/* Email Sending Interface with Progress Animation */}
+                    <div className="w-full h-full bg-black/80 rounded-2xl p-6 flex flex-col border border-gray-800">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold text-white">
-                          E-mail Sending
+                          E-mail Sending..
                         </h3>
-                        <div className="w-6 h-6 rounded-full bg-purple-500"></div>
+                        <div className="w-6 h-6 rounded-full bg-purple-500 animate-spin" style={{
+                          background: "linear-gradient(141deg, rgb(223, 122, 254) 13%, rgba(201, 110, 240, 0) 35%, rgba(164, 92, 219, 0) 64%, rgb(129, 74, 200) 88%)"
+                        }}></div>
                       </div>
                       
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <Badge className="bg-blue-600 text-white border-0">LinkedIn</Badge>
-                        <Badge className="bg-gray-700 text-white border-0">IT services</Badge>
-                        <Badge className="bg-gray-700 text-white border-0">Founders</Badge>
+                        <Badge className="bg-purple-600/20 border-purple-600/40 text-purple-300 text-xs">LinkedIn</Badge>
+                        <Badge className="bg-white/5 border-gray-700 text-gray-300 text-xs">IT services</Badge>
+                        <Badge className="bg-white/5 border-gray-700 text-gray-300 text-xs">Founders</Badge>
                       </div>
                       
-                      <div className="space-y-3 flex-1 overflow-y-auto">
+                      <div className="space-y-3 flex-1 overflow-hidden mb-4" style={{
+                        mask: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0, 0, 0, 0) 100%)",
+                        WebkitMask: "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0, 0, 0, 0) 100%)"
+                      }}>
                         {emailContacts.map((contact, contactIndex) => (
-                          <div key={contactIndex} className="flex items-center space-x-3 p-3 bg-white/5 rounded-lg">
-                            <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+                          <div key={contactIndex} className="flex items-center space-x-3 p-3 bg-white/5 rounded-lg border border-gray-800">
+                            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                               <span className="text-xs text-white font-medium">
                                 {contact.name.split(' ').map(n => n[0]).join('')}
                               </span>
                             </div>
-                            <div className="flex-1">
-                              <div className="flex items-center space-x-2">
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center space-x-2 mb-1">
                                 <span className="text-sm text-white font-medium">{contact.name}</span>
                                 {contact.verified && (
                                   <Badge className="bg-green-500/20 border-green-500/40 text-green-400 text-xs">
@@ -300,6 +393,21 @@ const ServicesSection = () => {
                             </div>
                           </div>
                         ))}
+                      </div>
+                      
+                      {/* Progress Bar Section */}
+                      <div className="space-y-2">
+                        <div className="relative h-0.5 bg-white/5 rounded-full overflow-hidden">
+                          <div 
+                            className="absolute left-0 top-0 h-full bg-purple-500 transition-all duration-1000 ease-out"
+                            style={{ width: visibleCards.has(4) ? '50%' : '1%' }}
+                          />
+                        </div>
+                        <div className="flex justify-between text-xs">
+                          <span className="text-white font-medium">Draft</span>
+                          <span className="text-white font-medium">Schedule</span>
+                          <span className="text-gray-500 font-medium">Sent</span>
+                        </div>
                       </div>
                     </div>
                   </div>
