@@ -56,7 +56,7 @@ export const useHeadingReveal = (options: UseHeadingRevealOptions = {}) => {
     if (!isRevealed) {
       switch (direction) {
         case 'slide-right':
-          return `${baseClasses} opacity-0 transform -translate-x-12`;
+          return `${baseClasses} opacity-0 transform translate-x-12`;
         case 'fade-up':
           return `${baseClasses} opacity-0 transform translate-y-8`;
         case 'fade-in':
