@@ -174,13 +174,51 @@ const HeroSection = () => {
           }`}
         >
           <Link to="/contact">
-            <Button variant="orbit" size="lg" className="flex items-center gap-2 font-medium text-sm sm:text-base w-full sm:w-auto">
+            <Button
+              variant="orbit"
+              size="lg"
+              className="font-medium text-sm sm:text-base"
+              style={{
+                boxSizing: 'border-box',
+                width: 'min-content',
+                height: 'min-content',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '9px 13px 9px 13px',
+                  boxShadow: '0px 0.7065919983928324px 0.7065919983928324px -0.625px rgba(0, 0, 0, 0.15), 0px 1.8065619053231785px 1.8065619053231785px -1.25px rgba(0, 0, 0, 0.14), 0px 3.6217592146567767px 3.6217592146567767px -1.875px rgba(0, 0, 0, 0.14), 0px 6.8655999097303715px 6.8655999097303715px -2.5px rgba(0, 0, 0, 0.13), 0px 13.646761411524492px 13.646761411524492px -3.125px rgba(0, 0, 0, 0.1), 0px 30px 30px -3.75px rgba(0, 0, 0, 0.05)',
+                  overflow: 'visible',
+                  alignContent: 'center',
+                  flexWrap: 'nowrap',
+                  gap: '10px',
+                  /* removed absolute positioning so the button participates in flex layout */
+                  borderRadius: '6px',
+                  border: '1px solid var(--token-6839e435-35f3-4ab3-b723-e98c27e525bc, rgba(255, 255, 255, 0.1))'
+              }}
+            >
               Get in touch <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
           </Link>
 
           <a href="#services">
-            <Button variant="outline" size="lg" className="font-medium text-sm sm:text-base w-full sm:w-auto">
+            <Button
+              variant="outline"
+              size="lg"
+              className="font-medium text-sm sm:text-base"
+              style={{
+                boxSizing: 'border-box',
+                width: 'min-content',
+                height: 'min-content',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '8px 12px',
+                borderRadius: '6px',
+                border: '1px solid rgba(255,255,255,0.08)'
+              }}
+            >
               View services
             </Button>
           </a>
