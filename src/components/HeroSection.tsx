@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import starfieldBg from "@/assets/starfield-bg.jpg";
 import { useWritingEffect } from "@/hooks/use-writing-effect";
 import { useSlideReveal } from "@/hooks/use-slide-reveal";
 
@@ -106,52 +105,32 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
-      style={{
-        backgroundImage: `url(${starfieldBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70 z-10" />
-
-      {/* Starfield */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Starfield - now behind the void */}
       <canvas ref={canvasRef} className="absolute inset-0 z-[5] pointer-events-none" />
 
       {/* Center circles wrapper */}
       <div className="absolute inset-0 flex items-center justify-center z-1 pointer-events-none">
-        {/* Void center */}
-        <div className="absolute w-64 sm:w-80 h-64 sm:h-80 bg-black rounded-full" />
+        {/* Big black void circle - behind rotating circles but above stars */}
+        <div className="absolute w-80 sm:w-96 h-80 sm:h-96 bg-black rounded-full z-[10]" 
+             style={{ backgroundColor: '#000000' }} />
 
-
-        {/* Big rotating Void circle */}
+        {/* Big rotating circle - in front of black void */}
         <div
-          className="w-[412px] h-[412px] block 
-     bg-[linear-gradient(229deg,#df7afe_23%,rgba(0, 0, 0, 1)_35%,rgba(0, 0, 0, 1)_64%,rgba(0, 0, 0, 1)_88%)] 
-     overflow-hidden gap-[10px] absolute rounded-[363px] animate-spin z-[3]"
-          style={{ animationDuration: "8s" }}
+          className="w-[406px] h-[406px] block overflow-hidden gap-[3px] absolute rounded-[363px] animate-spin-reverse blur-sm z-[15]"
+          style={{
+            background: "linear-gradient(229deg, #df7afe 23%, rgba(201, 110, 240, 0) 35%, rgba(164, 92, 219, 0) 64%, rgb(129, 74, 200) 88%)",
+            animationDuration: "8s" }}
         />
 
-
-        {/* Big rotating circle */}
+        {/* Small rotating circle - in front of black void */}
         <div
-          className="w-[406px] h-[406px] block 
-     bg-[linear-gradient(229deg,#df7afe_23%,rgba(201,110,240,0)_35%,rgba(164,92,219,0)_64%,rgb(129,74,200)_88%)] 
-     overflow-hidden gap-[10px] absolute rounded-[363px] animate-spin-reverse"
-          style={{ animationDuration: "8s" }}
-        />
-
-        {/* Small rotating circle */}
-        <div
-          className="w-[300px] h-[300px] block overflow-hidden absolute z-[1] rounded-[363px] animate-spin"
+          className="w-[300px] h-[300px] block overflow-hidden absolute z-[16] rounded-[363px] animate-spin blur-sm"
           style={{
             background: "linear-gradient(141deg, #df7afe 13%, rgba(201, 110, 240, 0) 35.0235827429153%, rgba(164, 92, 219, 0) 64.17244225559735%, rgb(129, 74, 200) 88%)",
             animationDuration: "6s",
           }}
         />
-
       </div>
 
       {/* Content */}
