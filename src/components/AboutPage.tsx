@@ -40,7 +40,7 @@ const Statistics = () => {
     const timer = setInterval(() => {
       step++;
       const progress = step / steps;
-      
+
       setCounts({
         clients: Math.round(targets.clients * progress),
         projects: Math.round(targets.projects * progress),
@@ -99,7 +99,7 @@ const Statistics = () => {
   );
 };
 
-// Team Member Component
+// Team Member Component (Now with profile image)
 const TeamMember = ({ name, role, description, image, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -112,12 +112,19 @@ const TeamMember = ({ name, role, description, image, delay = 0 }) => {
   }, [delay]);
 
   return (
-    <div className={`transition-all duration-700 ${
-      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-    }`}>
+    <div
+      className={`transition-all duration-700 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+    >
       <div className="bg-orbit-card border border-orbit-purple/20 rounded-xl p-6 hover:border-orbit-purple/40 transition-all duration-300 group">
         <div className="flex items-start space-x-4">
-          <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${image} flex-shrink-0`} />
+          {/* Profile Image */}
+          <img
+            src={image}
+            alt={name}
+            className="w-16 h-16 rounded-full object-cover flex-shrink-0 border border-orbit-purple/30"
+          />
           <div className="flex-1">
             <h3 className="text-orbit-text-primary font-semibold text-lg group-hover:text-orbit-purple transition-colors duration-300">
               {name}
@@ -138,36 +145,12 @@ const TeamMember = ({ name, role, description, image, delay = 0 }) => {
 // Values Component
 const Values = () => {
   const values = [
-    {
-      icon: "🎯",
-      title: "Innovation First",
-      description: "We stay at the forefront of AI technology to bring cutting-edge solutions to your business."
-    },
-    {
-      icon: "🤝",
-      title: "Client-Centric",
-      description: "Your success is our success. We build long-term partnerships based on trust and results."
-    },
-    {
-      icon: "⚡",
-      title: "Efficiency Focus",
-      description: "We streamline processes to save you time and resources while maximizing productivity."
-    },
-    {
-      icon: "🔒",
-      title: "Security Priority",
-      description: "Data security and privacy are paramount in everything we build and deploy."
-    },
-    {
-      icon: "📈",
-      title: "Scalable Solutions",
-      description: "Our solutions grow with your business, ensuring long-term value and adaptability."
-    },
-    {
-      icon: "🎨",
-      title: "Quality Excellence",
-      description: "We deliver high-quality solutions that exceed expectations and drive real results."
-    }
+    { icon: "🎯", title: "Innovation First", description: "We stay at the forefront of AI technology to bring cutting-edge solutions to your business." },
+    { icon: "🤝", title: "Client-Centric", description: "Your success is our success. We build long-term partnerships based on trust and results." },
+    { icon: "⚡", title: "Efficiency Focus", description: "We streamline processes to save you time and resources while maximizing productivity." },
+    { icon: "🔒", title: "Security Priority", description: "Data security and privacy are paramount in everything we build and deploy." },
+    { icon: "📈", title: "Scalable Solutions", description: "Our solutions grow with your business, ensuring long-term value and adaptability." },
+    { icon: "🎨", title: "Quality Excellence", description: "We deliver high-quality solutions that exceed expectations and drive real results." }
   ];
 
   return (
@@ -197,7 +180,7 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-orbit-dark text-orbit-text-primary relative">
       <AnimatedBackground />
-      
+
       <div className="relative z-10">
         <div className="container mx-auto px-4 py-16">
           {/* Header Section */}
@@ -232,15 +215,9 @@ const AboutPage = () => {
             <div>
               <h2 ref={storyHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-3xl md:text-4xl font-bold mb-6 ${storyHeading.animationClasses}`}>Our Story</h2>
               <div className="space-y-4 text-orbit-text-muted leading-relaxed">
-                <p>
-                  Founded in 2019, OrbIT Labs emerged from a simple observation: businesses were spending countless hours on repetitive tasks that could be automated with the right technology.
-                </p>
-                <p>
-                  What started as a small team of AI enthusiasts has grown into a full-service automation company, serving clients across industries from startups to Fortune 500 companies.
-                </p>
-                <p>
-                  Our mission remains unchanged: to democratize AI technology and make intelligent automation accessible to businesses of all sizes.
-                </p>
+                <p>Founded in 2019, OrbIT Labs emerged from a simple observation: businesses were spending countless hours on repetitive tasks that could be automated with the right technology.</p>
+                <p>What started as a small team of AI enthusiasts has grown into a full-service automation company, serving clients across industries from startups to Fortune 500 companies.</p>
+                <p>Our mission remains unchanged: to democratize AI technology and make intelligent automation accessible to businesses of all sizes.</p>
               </div>
               <Link to="/#services" style={{ textDecoration: 'none' }}>
                 <Button variant="orbit" className="mt-6">
@@ -280,42 +257,42 @@ const AboutPage = () => {
                 name="Alex Chen"
                 role="CEO & AI Strategist"
                 description="10+ years in AI research and business automation. Leads our vision for intelligent workflow solutions."
-                image="from-blue-500 to-purple-600"
+                image="WhatsApp Image 2025-04-28 at 22.26.59_a107a393.jpg"
                 delay={0}
               />
               <TeamMember
                 name="Sarah Rodriguez"
                 role="Head of Engineering"
                 description="Expert in machine learning and system architecture. Ensures our solutions are robust and scalable."
-                image="from-purple-500 to-pink-500"
+                image="/images/sarah.jpg"
                 delay={200}
               />
               <TeamMember
                 name="Michael Zhang"
                 role="Automation Specialist"
                 description="Specializes in workflow optimization and process automation. Turns complex challenges into simple solutions."
-                image="from-green-500 to-teal-500"
+                image="/images/michael.jpg"
                 delay={400}
               />
               <TeamMember
                 name="Emma Johnson"
                 role="UX/UI Designer"
                 description="Creates intuitive interfaces for our AI tools. Believes technology should be beautiful and accessible."
-                image="from-orange-500 to-red-500"
+                image="/images/emma.jpg"
                 delay={600}
               />
               <TeamMember
                 name="David Kim"
                 role="Data Scientist"
                 description="PhD in Machine Learning. Develops the AI models that power our automation solutions."
-                image="from-cyan-500 to-blue-500"
+                image="/images/david.jpg"
                 delay={800}
               />
               <TeamMember
                 name="Lisa Wang"
                 role="Customer Success Manager"
                 description="Ensures every client achieves their automation goals. Your success is her priority."
-                image="from-pink-500 to-rose-500"
+                image="/images/lisa.jpg"
                 delay={1000}
               />
             </div>
