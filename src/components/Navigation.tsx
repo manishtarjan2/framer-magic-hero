@@ -12,7 +12,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto h-[60px] bg-orbit-dark bg-opacity-95 backdrop-blur-md shadow-md">
+    <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-6 max-w-8xl mx-auto h-[60px] bg-orbit-dark bg-opacity-95 backdrop-blur-md shadow-md">
       {/* Logo */}
       <div
         style={{

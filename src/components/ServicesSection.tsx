@@ -309,7 +309,7 @@ const ServicesSection = () => {
                             )}
                           </div>
                           <div className="w-6 h-6 bg-white/5 border border-gray-700 rounded flex items-center justify-center ml-2">
-                            <div className="w-3 h-3 text-purple-400">▶</div>
+                            <div className="w-3 h-3 text-purple-400 flex items-center justify-center">▶</div>
                           </div>
                         </div>
                         
