@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Footer from './Footer';
+import { useHeadingReveal } from '@/hooks/use-heading-reveal';
 
 // Animated Background Orbs
 const AnimatedOrbs: React.FC = () => {
@@ -196,6 +197,11 @@ const ContactInfo: React.FC = () => {
 
 // Main Contact Page Component
 const ContactPage: React.FC = () => {
+  const heroHeading = useHeadingReveal({ direction: 'slide-right', delay: 300 });
+  const heroSubheading = useHeadingReveal({ direction: 'slide-right', delay: 600 });
+  const formHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
+  const faqHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
+  
   return (
     <div className="min-h-screen bg-orbit-dark text-orbit-text-primary relative">
       <AnimatedOrbs />
@@ -207,13 +213,13 @@ const ContactPage: React.FC = () => {
             <div className="inline-block bg-orbit-card border border-orbit-purple/20 text-orbit-text-muted px-4 py-2 rounded-full text-sm mb-6">
               Get In Touch
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h1 ref={heroHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-4xl md:text-5xl font-bold mb-6 leading-tight ${heroHeading.animationClasses}`}>
               Ready to Transform<br />
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Your Workflow?
               </span>
             </h1>
-            <p className="text-orbit-text-muted text-lg max-w-2xl mx-auto leading-relaxed">
+            <p ref={heroSubheading.ref as React.RefObject<HTMLParagraphElement>} className={`text-orbit-text-muted text-lg max-w-2xl mx-auto leading-relaxed ${heroSubheading.animationClasses}`}>
               Let's discuss how AI automation can streamline your business processes, 
               boost efficiency, and drive growth. Our team is ready to help you get started.
             </p>
@@ -226,7 +232,7 @@ const ContactPage: React.FC = () => {
           <div className="max-w-xl mx-auto">
             <div className="bg-orbit-card/30 backdrop-blur-sm border border-orbit-purple/20 rounded-xl p-4 md:p-6">
               <div className="mb-4">
-                <h2 className="text-xl font-bold mb-2">Send us a message</h2>
+                <h2 ref={formHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-xl font-bold mb-2 ${formHeading.animationClasses}`}>Send us a message</h2>
                 <p className="text-orbit-text-muted text-sm">
                   Fill out the form below and we'll get back to you as soon as possible. 
                   All fields marked with an asterisk (*) are required.
@@ -238,7 +244,7 @@ const ContactPage: React.FC = () => {
 
           {/* FAQ Section */}
           <div className="max-w-3xl mx-auto mt-16">
-            <h3 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h3>
+            <h3 ref={faqHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-2xl font-bold text-center mb-8 ${faqHeading.animationClasses}`}>Frequently Asked Questions</h3>
             <div className="space-y-4">
               {[
                 {

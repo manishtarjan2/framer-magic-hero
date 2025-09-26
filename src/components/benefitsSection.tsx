@@ -1,7 +1,9 @@
 import React from 'react';
 import { Zap, Users, Clock, DollarSign, TrendingUp, BarChart3 } from 'lucide-react';
+import { useHeadingReveal } from '@/hooks/use-heading-reveal';
 
 const BenefitsSection = () => {
+  const benefitsHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
   const benefits = [
     {
       icon: <Zap className="w-6 h-6 text-white" />,

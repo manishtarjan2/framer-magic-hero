@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Footer from './Footer';
+import { useHeadingReveal } from '@/hooks/use-heading-reveal';
 
 // Intersection Observer Hook
 const useIntersectionObserver = (options = {}): [React.RefObject<HTMLDivElement>, boolean] => {
@@ -161,6 +162,9 @@ const FeaturedBlogCard: React.FC<{
 
 // Main Blog Page Component
 const BlogPage: React.FC = () => {
+  const heroHeading = useHeadingReveal({ direction: 'slide-right', delay: 300 });
+  const heroSubheading = useHeadingReveal({ direction: 'slide-right', delay: 600 });
+  const newsletterHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
   const [headerRef, headerIntersected] = useIntersectionObserver();
   const [selectedPost, setSelectedPost] = useState<typeof blogPosts[0] | null>(null);
 
@@ -225,10 +229,10 @@ const BlogPage: React.FC = () => {
           <div className="inline-block bg-orbit-card border border-orbit-purple/20 text-orbit-text-muted px-4 py-2 rounded-full text-sm mb-6">
             Blog
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 ref={heroHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-5xl md:text-6xl font-bold mb-6 leading-tight ${heroHeading.animationClasses}`}>
             Unlock AI Insights with Us
           </h1>
-          <p className="text-orbit-text-muted text-lg max-w-2xl mx-auto leading-relaxed">
+          <p ref={heroSubheading.ref as React.RefObject<HTMLParagraphElement>} className={`text-orbit-text-muted text-lg max-w-2xl mx-auto leading-relaxed ${heroSubheading.animationClasses}`}>
             Stay informed with the latest AI trends, insights, and strategies to drive
             innovation and business growth.
           </p>
@@ -271,7 +275,7 @@ const BlogPage: React.FC = () => {
         {/* Newsletter Subscription */}
         <div className="mt-20 text-center">
           <div className="bg-orbit-card/30 backdrop-blur-sm border border-orbit-purple/20 rounded-2xl p-12 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
+            <h3 ref={newsletterHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-2xl font-bold mb-4 ${newsletterHeading.animationClasses}`}>Stay Updated</h3>
             <p className="text-orbit-text-muted mb-8">
               Get the latest AI insights delivered straight to your inbox. No spam, just valuable content.
             </p>
