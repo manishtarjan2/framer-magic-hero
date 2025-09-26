@@ -162,28 +162,28 @@ const BlogPage: React.FC = () => {
     {
       title: "Building Custom Chatbots: A Complete Guide for Businesses",
       category: "Tutorial",
-      image: "src\assets\customBot.jpeg",
+      image: "src/assets/customBot.jpeg",
       excerpt: "Step-by-step guide to creating powerful chatbots tailored to your business needs.",
       date: "March 10, 2024"
     },
     {
       title: "ROI of AI Implementation: Real Case Studies",
       category: "Case Study",
-      image: "https://images.unsplash.com/photo-1665686300791-6b1c9d3a8b98?auto=format&fit=crop&w=1400&q=80",
+      image: "src/assets/image.jpeg",
       excerpt: "Learn from real-world examples how AI implementation drives measurable business results.",
       date: "March 8, 2024"
     },
     {
       title: "Workflow Automation Best Practices for 2025",
       category: "Guide",
-      image: "https://images.unsplash.com/photo-1634942536969-3ac3e07258ae?auto=format&fit=crop&w=1400&q=80",
+      image: "src/assets/workAuto.png",
       excerpt: "Master the art of workflow automation with proven strategies for the modern workplace.",
       date: "March 5, 2024"
     },
     {
       title: "Integration Strategies: Connecting AI with Existing Systems",
       category: "Technical",
-      image: "https://images.unsplash.com/photo-1627430109212-57f075444efb?auto=format&fit=crop&w=1400&q=80",
+      image: "src/assets/intrgStrete.png",
       excerpt: "Technical insights on seamlessly integrating AI solutions with your current infrastructure.",
       date: "March 3, 2024"
     }
