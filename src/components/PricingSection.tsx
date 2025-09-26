@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Check, Rocket, Zap, Crown } from 'lucide-react';
+import { useHeadingReveal } from '@/hooks/use-heading-reveal';
 
 const PricingSection = () => {
   const [isAnnual, setIsAnnual] = useState(true);
+  const pricingHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
 
   const pricingPlans = [
     {
@@ -63,7 +65,7 @@ const PricingSection = () => {
           <div className="inline-block bg-black text-gray-300 px-4 py-2 rounded-full text-sm mb-6 border border-white-1px">
             Pricing
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h2 ref={pricingHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-5xl md:text-6xl font-bold mb-6 leading-tight ${pricingHeading.animationClasses}`}>
             The Best AI Automation,<br />
             at the Right Price
           </h2>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
+import { useHeadingReveal } from '@/hooks/use-heading-reveal';
 
 // Animated Background Component
 const AnimatedBackground = () => {
@@ -187,6 +188,12 @@ const Values = () => {
 };
 
 const AboutPage = () => {
+  const heroHeading = useHeadingReveal({ direction: 'slide-right', delay: 300 });
+  const heroSubheading = useHeadingReveal({ direction: 'slide-right', delay: 600 });
+  const impactHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
+  const storyHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
+  const valuesHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
+  const teamHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
   return (
     <div className="min-h-screen bg-orbit-dark text-orbit-text-primary relative">
       <AnimatedBackground />
@@ -198,11 +205,11 @@ const AboutPage = () => {
             <div className="inline-block bg-orbit-card border border-orbit-purple/20 text-orbit-text-muted px-4 py-2 rounded-full text-sm mb-6">
               About Us
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 ref={heroHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-4xl md:text-6xl font-bold mb-6 leading-tight ${heroHeading.animationClasses}`}>
               Transforming Businesses with
               <span className="block text-orbit-purple">AI Automation</span>
             </h1>
-            <p className="text-orbit-text-muted text-lg max-w-3xl mx-auto leading-relaxed">
+            <p ref={heroSubheading.ref as React.RefObject<HTMLParagraphElement>} className={`text-orbit-text-muted text-lg max-w-3xl mx-auto leading-relaxed ${heroSubheading.animationClasses}`}>
               At OrbIT Labs, we're passionate about helping businesses unlock their full potential through intelligent automation. 
               Our team of AI specialists and automation experts work tirelessly to create solutions that drive efficiency, 
               reduce costs, and accelerate growth.
@@ -212,7 +219,7 @@ const AboutPage = () => {
           {/* Statistics Section */}
           <div className="bg-orbit-card border border-orbit-purple/20 rounded-2xl p-8 md:p-12 mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Impact in Numbers</h2>
+              <h2 ref={impactHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-2xl md:text-3xl font-bold mb-4 ${impactHeading.animationClasses}`}>Our Impact in Numbers</h2>
               <p className="text-orbit-text-muted">
                 These numbers represent real businesses we've helped transform
               </p>
@@ -223,7 +230,7 @@ const AboutPage = () => {
           {/* Our Story Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
+              <h2 ref={storyHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-3xl md:text-4xl font-bold mb-6 ${storyHeading.animationClasses}`}>Our Story</h2>
               <div className="space-y-4 text-orbit-text-muted leading-relaxed">
                 <p>
                   Founded in 2019, OrbIT Labs emerged from a simple observation: businesses were spending countless hours on repetitive tasks that could be automated with the right technology.
@@ -252,7 +259,7 @@ const AboutPage = () => {
           {/* Our Values Section */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
+              <h2 ref={valuesHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-3xl md:text-4xl font-bold mb-4 ${valuesHeading.animationClasses}`}>Our Values</h2>
               <p className="text-orbit-text-muted max-w-2xl mx-auto">
                 These core principles guide every decision we make and every solution we create
               </p>
@@ -263,7 +270,7 @@ const AboutPage = () => {
           {/* Team Section */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
+              <h2 ref={teamHeading.ref as React.RefObject<HTMLHeadingElement>} className={`text-3xl md:text-4xl font-bold mb-4 ${teamHeading.animationClasses}`}>Meet Our Team</h2>
               <p className="text-orbit-text-muted max-w-2xl mx-auto">
                 A diverse group of AI specialists, developers, and automation experts dedicated to your success
               </p>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHeadingReveal } from '@/hooks/use-heading-reveal';
 
 // Radar Animation Component
 const RadarAnimation = () => {
@@ -515,6 +516,8 @@ const Checklist = () => (
 
 // Main Process Section Component
 const ProcessSection = () => {
+  const processHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
+  
   return (
   <section id="process" className="bg-black text-white py-12 px-4">
       <div className="max-w-4xl mx-auto">

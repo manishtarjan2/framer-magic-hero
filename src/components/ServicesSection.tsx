@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Clock, Bot, Mail, TrendingUp, Code, MessageCircle, Check, X } from "lucide-react";
+import { useHeadingReveal } from '@/hooks/use-heading-reveal';
 
 const ServicesSection = () => {
+  const servicesHeading = useHeadingReveal({ direction: 'fade-up', delay: 200 });
   const [visibleCards, setVisibleCards] = useState(new Set());
   const [typingText, setTypingText] = useState('');
   const [scrollPosition, setScrollPosition] = useState(0);
