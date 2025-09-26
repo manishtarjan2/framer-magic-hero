@@ -55,8 +55,13 @@ const Navigation = () => {
 
       {/* CTA Button */}
       <div className="flex items-center h-full">
-        <Button variant="orbit" className="px-6 py-2 rounded-lg font-medium h-[40px] flex items-center">
-          Book a call
+        <Button variant="orbit" className="px-6 py-2 rounded-lg font-medium h-[40px] flex items-center overflow-hidden group relative" style={{height: '40px'}}>
+          <span className="block transition-transform duration-500 group-hover:-translate-y-full group-hover:opacity-0">
+            Book a call
+          </span>
+          <span className="block absolute left-0 right-0 top-full transition-transform duration-500 translate-y-0 group-hover:translate-y-[-150%] group-hover:opacity-100 opacity-0">
+            Book a call
+          </span>
         </Button>
       </div>
     </nav>

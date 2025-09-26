@@ -590,7 +590,7 @@ const ProcessSection = () => {
                 We refine performance, analyze insights, and enhance automation for long-term growth.
               </p>
             </div>
-            <div className="mt-4 scale-75 origin-center">
+            <div className="mt-4 scale-75 origin-center border border-white-1px p-3 ml-2">
               <OptimizationDashboard />
             </div>
           </div>

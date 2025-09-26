@@ -83,7 +83,7 @@ const ServicesSection = () => {
       badges: [],
       icon: Bot,
       type: "assistant-animation",
-      column: "left"
+      column: "right"
     },
     // AI Assistant - Text Card
     {
@@ -93,7 +93,7 @@ const ServicesSection = () => {
       badges: ["Summaries", "Scheduling", "Many more"],
       icon: Bot,
       type: "assistant-text",
-      column: "right"
+      column: "left"
     },
     // Sales & Marketing - Animation Card
     {
@@ -123,7 +123,7 @@ const ServicesSection = () => {
       badges: [],
       icon: Code,
       type: "custom-animation",
-      column: "left"
+      column: "right"
     },
     // Custom Projects - Text Card
     {
@@ -133,7 +133,7 @@ const ServicesSection = () => {
       badges: ["Strategy", "Custom AI", "Consulting"],
       icon: Code,
       type: "custom-text",
-      column: "right"
+      column: "left"
     }
   ];
 
@@ -249,50 +249,7 @@ const ServicesSection = () => {
                       {service.description}
                     </p>
                   </div>
-                ) : service.type === 'assistant-animation' ? (
-                  <div className="h-full">
-                    {/* Chat Interface */}
-                    <div className="w-full h-full bg-black/80 rounded-2xl p-6 flex flex-col">
-                      {/* Chat Header */}
-                      <div className="flex items-center justify-center mb-6">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-purple-700/30 flex items-center justify-center">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600"></div>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-lg font-semibold text-white mb-4 text-center">
-                        What can I help with?
-                      </h3>
-                      
-                      <p className="text-gray-400 text-sm leading-relaxed text-center mb-6">
-                        Whether you need help in customer handling or make changes in your system just give me command
-                      </p>
-                      
-                      {/* Chat Input */}
-                      <div className="bg-white/5 rounded-lg p-4 text-sm text-gray-300 mb-4">
-                        <div className="flex items-center space-x-2">
-                          <span>{typingText}</span>
-                          {visibleCards.has(index) && (
-                            <div className="w-2 h-4 bg-purple-500 animate-pulse"></div>
-                          )}
-                        </div>
-                      </div>
-                      
-                      {/* Additional UI elements */}
-                      <div className="space-y-2 text-xs text-gray-500 mt-auto">
-                        <div className="flex items-center space-x-2">
-                          <span>📄</span>
-                          <span>Add document</span>
-                        </div>
-                        <div className="flex items-center space-x-4 text-xs">
-                          <span>📊 Analyze</span>
-                          <span>🖼️ Generate image</span>
-                          <span>🔍 research</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ) : service.type === 'assistant-text' ? (
+                )  : service.type === 'assistant-text' ? (
                   <div className="h-full flex flex-col justify-center">
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 leading-tight">
                       {service.title}

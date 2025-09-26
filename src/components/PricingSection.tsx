@@ -137,8 +137,13 @@ const PricingSection = () => {
               </p>
 
               {/* CTA Button */}
-              <button className={`w-full py-3 rounded-lg font-semibold transition-colors duration-300 mb-5 ${plan.buttonStyle}`}>
-                {plan.buttonText}
+              <button className={`w-full py-3 rounded-lg font-semibold transition-colors duration-300 mb-5 ${plan.buttonStyle} group relative overflow-hidden`} style={{height: '48px'}}>
+                <span className="block transition-transform duration-500 group-hover:-translate-y-full group-hover:opacity-0">
+                  {plan.buttonText}
+                </span>
+                <span className="block absolute left-0 right-0 top-full transition-transform duration-500 translate-y-0 group-hover:translate-y-[-150%] group-hover:opacity-100 opacity-0">
+                  {plan.buttonText}
+                </span>
               </button>
 
               {/* Features */}
