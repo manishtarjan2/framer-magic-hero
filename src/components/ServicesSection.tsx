@@ -422,29 +422,90 @@ const ServicesSection = () => {
                   </div>
                 ) : service.type === 'custom-animation' ? (
                   <div className="h-full">
-                    {/* Custom Projects Visual Demo */}
-                    <div className="w-full h-full bg-black/80 rounded-2xl p-6 flex flex-col items-center justify-center">
-                      <div className="w-20 h-20 mb-6 rounded-xl bg-gradient-to-br from-blue-500/30 to-purple-600/30 flex items-center justify-center">
-                        <Code className="w-10 h-10 text-blue-400" />
+                    {/* Custom Projects Interface */}
+                    <div className="w-full h-full bg-black/80 rounded-2xl p-4 flex flex-col border border-gray-800">
+                      {/* Greeting Section */}
+                      <div className="mb-4">
+                        <h3 className="text-white font-semibold text-lg">Hey David!</h3>
+                        <p className="text-gray-400 text-sm">Here is your Custom project & schedule</p>
                       </div>
                       
-                      <div className="text-center mb-6">
-                        <h4 className="text-white font-semibold mb-2">Custom AI Solutions</h4>
-                        <p className="text-gray-400 text-sm">Tailored to your needs</p>
+                      {/* Project Status Section */}
+                      <div className="bg-white/5 border border-gray-700 rounded-lg p-3 mb-4">
+                        <div className="flex items-center space-x-2 mb-3">
+                          <div className="w-3 h-3 text-gray-400">⚙️</div>
+                          <span className="text-white text-sm font-medium">On going project:</span>
+                        </div>
+                        
+                        <div className="bg-white/5 border border-gray-700 rounded p-3">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-3">
+                              <div className="w-6 h-6 bg-white/10 rounded flex items-center justify-center">
+                                <Bot className="w-4 h-4 text-white" />
+                              </div>
+                              <div>
+                                <div className="text-white text-sm font-medium">Customer Support Chatbot</div>
+                                <div className="text-gray-400 text-xs">90% Finished</div>
+                              </div>
+                            </div>
+                            <div className="w-4 h-4 animate-spin text-gray-400">
+                              <div className="w-full h-full border-2 border-gray-600 border-t-purple-400 rounded-full"></div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       
-                      <div className="space-y-3 w-full">
-                        <div className="flex items-center space-x-3 p-3 bg-white/5 rounded-lg">
-                          <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                          <span className="text-sm text-gray-300">Strategy Planning</span>
-                        </div>
-                        <div className="flex items-center space-x-3 p-3 bg-white/5 rounded-lg">
-                          <div className="w-3 h-3 rounded-full bg-blue-400"></div>
-                          <span className="text-sm text-gray-300">AI Development</span>
-                        </div>
-                        <div className="flex items-center space-x-3 p-3 bg-white/5 rounded-lg">
-                          <div className="w-3 h-3 rounded-full bg-purple-400"></div>
-                          <span className="text-sm text-gray-300">Implementation</span>
+                      {/* Calendar Section */}
+                      <div className="flex-1">
+                        <div className="bg-white/5 border border-gray-700 rounded-lg p-3 h-full">
+                          <div className="flex items-center space-x-2 mb-3">
+                            <div className="w-3 h-3 text-gray-400">📅</div>
+                            <span className="text-white text-sm font-medium">Schedule</span>
+                          </div>
+                          
+                          {/* Week Days */}
+                          <div className="flex justify-between mb-3">
+                            {['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((day, index) => (
+                              <div 
+                                key={day}
+                                className={`
+                                  px-2 py-1 rounded text-xs text-gray-300 text-center min-w-[24px]
+                                  ${(visibleCards.has(6) && index === 0) ? 'bg-purple-600' : ''}
+                                `}
+                              >
+                                {day}
+                              </div>
+                            ))}
+                          </div>
+                          
+                          {/* Meeting List */}
+                          <div className="space-y-2">
+                            <div className="bg-white/5 rounded p-2">
+                              <div className="flex items-center space-x-2">
+                                <div className="w-4 h-4 bg-white/10 rounded flex items-center justify-center">
+                                  <div className="w-2 h-2 text-white text-xs">📹</div>
+                                </div>
+                                <div className="flex-1">
+                                  <div className="text-white text-xs font-medium">Discovery call</div>
+                                  <div className="text-gray-400 text-xs">10:00 am to 10:30 am</div>
+                                </div>
+                                <div className="text-gray-400">⋮</div>
+                              </div>
+                            </div>
+                            
+                            <div className="bg-white/5 rounded p-2">
+                              <div className="flex items-center space-x-2">
+                                <div className="w-4 h-4 bg-white/10 rounded flex items-center justify-center">
+                                  <div className="w-2 h-2 text-white text-xs">🔄</div>
+                                </div>
+                                <div className="flex-1">
+                                  <div className="text-white text-xs font-medium">Custom automation</div>
+                                  <div className="text-gray-400 text-xs">06:00 pm to 06:30 pm</div>
+                                </div>
+                                <div className="text-gray-400">⋮</div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
